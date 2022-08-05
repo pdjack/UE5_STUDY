@@ -55,3 +55,6 @@ AMyCharacter::AMyCharacter()
 
 
 ![image](https://user-images.githubusercontent.com/29656900/183038253-cd4e1769-0366-4435-be8b-0638956d5f73.png)
+
+![image](https://user-images.githubusercontent.com/29656900/183038918-4fa9ae5b-3c78-4e1a-bb1f-ef2216b515cb.png)
+
