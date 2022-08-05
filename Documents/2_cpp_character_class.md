@@ -6,6 +6,10 @@
 
 ![image](https://user-images.githubusercontent.com/29656900/183031289-1c301f30-fa13-4b97-a353-dccf746f5884.png)
 
+# MyCharacter.h
+코드 수정 :  #include "CoreMinimal.h" => #include "EngineMinimal.h"
+![image](https://user-images.githubusercontent.com/29656900/183033033-ecc66c4d-cfbb-41db-999a-d0968b6cad5f.png)
+
 # Live Coding
 - c++ 소스를 수정후에 Unreal Editor 에서 Recompile 을 한다.
 ![LiveCoding](https://user-images.githubusercontent.com/29656900/183032255-4f489bd9-0151-4578-9bc2-60b971b5bfbd.png)
