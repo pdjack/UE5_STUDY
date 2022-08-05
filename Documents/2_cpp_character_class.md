@@ -71,7 +71,7 @@ AMyCharacter::AMyCharacter()
 ![image](https://user-images.githubusercontent.com/29656900/183040983-867d9ade-d980-42fb-9112-1664b8fd228a.png)
 회전 -90
 ![image](https://user-images.githubusercontent.com/29656900/183041150-5b622b25-053f-430a-b06e-824cfe3ac515.png)
-위치 조정 Y: -88.0
+위치 조정 Z -88.0
 ![image](https://user-images.githubusercontent.com/29656900/183041401-0423b9a6-16a3-4a77-8c31-b7d32841042d.png)
 Map에 드래그 해서 확인
 ![image](https://user-images.githubusercontent.com/29656900/183041711-c4b235f7-d64b-4fa3-a7a2-3bb3d4f1e611.png)
