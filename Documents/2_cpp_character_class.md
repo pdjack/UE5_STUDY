@@ -6,7 +6,7 @@
 
 ![image](https://user-images.githubusercontent.com/29656900/183031289-1c301f30-fa13-4b97-a353-dccf746f5884.png)
 
-# MyCharacter.h
+# MyCharacter
 코드 수정 :  #include "CoreMinimal.h" => #include "EngineMinimal.h"
 ![image](https://user-images.githubusercontent.com/29656900/183033033-ecc66c4d-cfbb-41db-999a-d0968b6cad5f.png)
 
@@ -26,7 +26,22 @@ public :
 ```
 MyCharacter.cpp
 ```
+// Sets default values
+AMyCharacter::AMyCharacter()
+{
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
 
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SPRINGARM"));
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CAMERA"));
+	Camera->SetupAttachment(SpringArm);
+
+	SpringArm->SetupAttachment(GetCapsuleComponent());
+	SpringArm->TargetArmLength = 400.0f;
+	SpringArm->SetRelativeRotation(FRotator(-15.0f, 0.0f, 0.0f));
+
+	
+}
 ```
 
 # Live Coding
