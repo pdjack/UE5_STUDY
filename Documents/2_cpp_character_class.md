@@ -67,6 +67,9 @@ AMyCharacter::AMyCharacter()
 ![image](https://user-images.githubusercontent.com/29656900/183039801-f8b5e0a3-70a1-412f-8a40-97efcc78d07a.png)
 
 # Set Skeletal Mesh
-![image](https://user-images.githubusercontent.com/29656900/183040597-de2a925e-bcc8-46eb-b027-a22ed9e7c44b.png)
+
 ![image](https://user-images.githubusercontent.com/29656900/183040983-867d9ade-d980-42fb-9112-1664b8fd228a.png)
+![image](https://user-images.githubusercontent.com/29656900/183041150-5b622b25-053f-430a-b06e-824cfe3ac515.png)
+![image](https://user-images.githubusercontent.com/29656900/183041401-0423b9a6-16a3-4a77-8c31-b7d32841042d.png)
+
 
