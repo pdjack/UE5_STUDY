@@ -68,4 +68,5 @@ AMyCharacter::AMyCharacter()
 
 # Set Skeletal Mesh
 ![image](https://user-images.githubusercontent.com/29656900/183040597-de2a925e-bcc8-46eb-b027-a22ed9e7c44b.png)
+![image](https://user-images.githubusercontent.com/29656900/183040983-867d9ade-d980-42fb-9112-1664b8fd228a.png)
 
