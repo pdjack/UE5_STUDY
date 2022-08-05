@@ -7,5 +7,4 @@
 ![image](https://user-images.githubusercontent.com/29656900/183031289-1c301f30-fa13-4b97-a353-dccf746f5884.png)
 
 # Live Coding
-![image](https://user-images.githubusercontent.com/29656900/183031963-e447fde2-d091-47f4-9cb9-6b15864df272.png)
-
+![LiveCoding](https://user-images.githubusercontent.com/29656900/183032255-4f489bd9-0151-4578-9bc2-60b971b5bfbd.png)
