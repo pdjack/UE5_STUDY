@@ -6,15 +6,13 @@
 
 ![image](https://user-images.githubusercontent.com/29656900/183031289-1c301f30-fa13-4b97-a353-dccf746f5884.png)
 
-# MyCharacter
+# MyCharacter 에 USpringArmComponent, UCameraComponent 추가 
 코드 수정 :  #include "CoreMinimal.h" => #include "EngineMinimal.h"
 ![image](https://user-images.githubusercontent.com/29656900/183033033-ecc66c4d-cfbb-41db-999a-d0968b6cad5f.png)
 
-- SpringArm , Camera 멤버 
+MyCharacter.h 
 
 ```
-<MyCharacter.h>
-
 public :
 ...
 	UPROPERTY(VisibleAnywhere, Category = Camera)
