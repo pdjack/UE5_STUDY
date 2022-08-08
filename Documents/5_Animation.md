@@ -62,6 +62,7 @@ Editor에서 실행한 화면
 
 ## 캐릭터 이동 속도에 따라 애니메이션 변경
 AnimInstance Class 에 CurrentPawnSpeed 변수 추가
+
 MyAnimInstance.h
 ```
 private:
