@@ -99,4 +99,4 @@ Bend poses by bool 검색
 ![image](https://user-images.githubusercontent.com/29656900/183343667-a5a16e2d-19a3-4a9b-81e1-5e039a6e5414.png)
 
 
-
+이제 에디터에서 실행하면, 이동키를 누를경우 이동하면서 이동 애니메이션이 재생되고 이동하지 않을 경우 Idle 애니메이션이 재생된다. 
