@@ -90,3 +90,13 @@ void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	}
 }
 ```
+### CurrentPawSpeed 가 0.0 이상일경우 Run , 아닐경우 Idle 애니메이션이 되도록 설정
+CurrentPawnSpeed 변수를 끌어다 놓고, ">" 을 검색 
+![image](https://user-images.githubusercontent.com/29656900/183343460-22d530d3-3dac-42b5-846e-72d8c32ac994.png)
+Bend poses by bool 검색
+![image](https://user-images.githubusercontent.com/29656900/183343553-8a0655cb-ac23-4cb9-8cd2-20e72bc6ba20.png)
+최종 : 
+![image](https://user-images.githubusercontent.com/29656900/183343667-a5a16e2d-19a3-4a9b-81e1-5e039a6e5414.png)
+
+
+
