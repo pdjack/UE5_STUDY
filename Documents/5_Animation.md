@@ -165,10 +165,17 @@ Land
 ### Transition Rule
 ![image](https://user-images.githubusercontent.com/29656900/183347738-8951c101-25c3-40df-a2d4-0d89071d06c0.png)
 
+Ground -> Jump
+![image](https://user-images.githubusercontent.com/29656900/183349456-50a8aecf-6c34-416e-ba92-7c7bc5024e66.png)
+
+Jump -> Fall Loop
+![image](https://user-images.githubusercontent.com/29656900/183349522-5f77baf0-6e64-45e9-8f9f-5b4ab860117c.png)
+
 
 Fall Loop ->Land
 ![image](https://user-images.githubusercontent.com/29656900/183349273-d9d965a4-d9d2-469b-8ea6-cb2c3efc36c6.png)
-![image](https://user-images.githubusercontent.com/29656900/183349357-207f9544-f36e-4f6a-ac2e-e555259b2feb.png)
+![image](https://user-images.githubusercontent.com/29656900/183349407-195e7a8e-fb23-4969-a929-5294b9eedfa9.png)
 
-
+Land -> Ground
+![image](https://user-images.githubusercontent.com/29656900/183349603-6046134a-f708-409b-b09c-5c4a4bff4f4e.png)
 
