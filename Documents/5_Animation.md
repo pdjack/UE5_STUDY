@@ -1,3 +1,4 @@
+## Animation Blueprint 
 ### C++ Anim Instance Class
 ![image](https://user-images.githubusercontent.com/29656900/183334501-cbdadaf3-16ad-4c01-9c94-36ac08d216df.png)
 ![image](https://user-images.githubusercontent.com/29656900/183334598-014071fe-7a05-4d9e-8f2e-259e90e55139.png)
@@ -20,7 +21,7 @@ Class Setting 눌러서 Parent Class 를 C++ Class 인 MyAnimInstance로 변경
 Animation Asset 을 드래그 하여 Output Pose 연결하고 Compile & Save
 ![image](https://user-images.githubusercontent.com/29656900/183335968-6894d57a-fad2-4580-a5d1-ceb13a11b5c7.png)
 
-## AnimBP 세팅
+## Character 에 AnimBP 세팅
 ### 첫번째 방법 : C++ Class MyCharacter에서 AnimInstance 세팅
 AnimBP 레퍼런스 저장
 
