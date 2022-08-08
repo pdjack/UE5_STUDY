@@ -1,5 +1,9 @@
 # Player Input
 
+Edit>ProjectSetting> Input
+![image](https://user-images.githubusercontent.com/29656900/183332114-67451f6b-3dfc-4570-85b2-1f509eaad6ba.png)
+
+
 MyCharacter.h
 ```
 public:
@@ -43,5 +47,23 @@ void AMyCharacter::Turn(float NewAxisValue)
 void AMyCharacter::LookUp(float NewAxisValue)
 {
 	AddControllerPitchInput(NewAxisValue);
+}
+```
+
+### Set ControlMode
+생성자에 코드 추가
+```
+AMyCharacter::AMyCharacter()
+{
+...
+	// SetControlMode
+	SpringArm->bUsePawnControlRotation = true;
+	SpringArm->bInheritPitch = true;
+	SpringArm->bInheritRoll = true;
+	SpringArm->bInheritYaw = true;
+	bUseControllerRotationYaw = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+	
 }
 ```
