@@ -179,3 +179,14 @@ Fall Loop ->Land
 Land -> Ground
 ![image](https://user-images.githubusercontent.com/29656900/183349603-6046134a-f708-409b-b09c-5c4a4bff4f4e.png)
 
+### Jump 구현
+![image](https://user-images.githubusercontent.com/29656900/183349748-7ef5a3a8-a466-4ab9-ab21-918293cbcbbe.png)
+MyCharacter.cpp
+```
+void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+...
+	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AMyCharacter::Jump);
+...
+}
+```
