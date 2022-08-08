@@ -108,7 +108,7 @@ State Machine 생성하여 기존 그래프를 이동시킨다.
 
 ![image](https://user-images.githubusercontent.com/29656900/183345424-9826b78d-9bc6-4c97-8297-bbbd2068bef6.png)
 
-
+State Machine 에 State를 추가한다.
 ![image](https://user-images.githubusercontent.com/29656900/183345288-61848244-4453-4db2-9e93-8eb6ef8aa46c.png)
 
 Ground State를 생성한다
