@@ -143,11 +143,11 @@ void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	{
 		CurrentPawnSpeed = Pawn->GetVelocity().Size();
 		
-		<b>auto Character = Cast<ACharacter>(Pawn);
+		auto Character = Cast<ACharacter>(Pawn);
 		if (Character)
 		{
 			IsInAir = Character->GetMovementComponent()->IsFalling();
-		}</b>
+		}
 	}
 }
 ```
