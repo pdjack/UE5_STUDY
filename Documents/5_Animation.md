@@ -100,3 +100,20 @@ Bend poses by bool 검색
 
 
 이제 에디터에서 실행하면, 이동키를 누를경우 이동하면서 이동 애니메이션이 재생되고 이동하지 않을 경우 Idle 애니메이션이 재생된다. 
+
+## State Machine
+State Machine 생성하여 기존 그래프를 이동시킨다.
+
+![image](https://user-images.githubusercontent.com/29656900/183345211-cd55c667-d887-45a2-bbd3-7cf004743e3a.png)
+
+![image](https://user-images.githubusercontent.com/29656900/183345424-9826b78d-9bc6-4c97-8297-bbbd2068bef6.png)
+
+
+![image](https://user-images.githubusercontent.com/29656900/183345288-61848244-4453-4db2-9e93-8eb6ef8aa46c.png)
+
+![image](https://user-images.githubusercontent.com/29656900/183345322-f751e5f9-2fa8-400e-893c-ff84d19f1d2d.png)
+
+![image](https://user-images.githubusercontent.com/29656900/183345378-0a29d8ab-989a-4940-af83-ee96a5827b2b.png)
+
+
+
