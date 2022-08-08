@@ -16,3 +16,13 @@ Class Setting 눌러서 Parent Class 를 C++ Class 인 MyAnimInstance로 변경
 
 옵션에서 Show Inherited Variables 체크
 ![image](https://user-images.githubusercontent.com/29656900/183335758-4d3fe918-22f7-421f-aec7-0bf3d974e5d9.png)
+
+Animation Asset 을 드래그 하여 Output Pose 연결하고 Compile & Save
+![image](https://user-images.githubusercontent.com/29656900/183335968-6894d57a-fad2-4580-a5d1-ceb13a11b5c7.png)
+
+### MyCharacter blueprint 세팅
+AnimClass 를 MyAnimBP 로 세팅
+![image](https://user-images.githubusercontent.com/29656900/183336199-03f9046c-cf66-4b05-b15d-22d1f55c28c5.png)
+
+Editor에서 실행한 화면
+![image](https://user-images.githubusercontent.com/29656900/183336267-17925ea9-fdb5-4908-8fc5-fe8ad6960523.png)
