@@ -152,7 +152,7 @@ void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 }
 ```
 
-State 추가
+### State 추가
 ![image](https://user-images.githubusercontent.com/29656900/183347337-1ba7d6b3-2a99-4fa2-b337-b0ed6aad56a9.png)
 
 Jump State
@@ -161,3 +161,8 @@ Fall Loop
 ![image](https://user-images.githubusercontent.com/29656900/183347506-b0b6a057-c065-4203-ba24-099e0b6a94fd.png)
 Land
 ![image](https://user-images.githubusercontent.com/29656900/183347580-d4237543-7917-468b-92e1-888b68f0334e.png)
+
+### Transition Rule
+![image](https://user-images.githubusercontent.com/29656900/183347738-8951c101-25c3-40df-a2d4-0d89071d06c0.png)
+
+
