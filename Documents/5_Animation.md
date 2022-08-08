@@ -113,6 +113,7 @@ State Machine 생성하여 기존 그래프를 이동시킨다.
 
 ![image](https://user-images.githubusercontent.com/29656900/183345322-f751e5f9-2fa8-400e-893c-ff84d19f1d2d.png)
 
+기존 그래프를 복사한다.
 ![image](https://user-images.githubusercontent.com/29656900/183345378-0a29d8ab-989a-4940-af83-ee96a5827b2b.png)
 
 
