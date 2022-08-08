@@ -60,7 +60,7 @@ Editor에서 실행한 화면
 ![image](https://user-images.githubusercontent.com/29656900/183336267-17925ea9-fdb5-4908-8fc5-fe8ad6960523.png)
 
 
-## 캐릭터 이동 속도에 따라 애니메이션 변경
+## 캐릭터 이동 애니메이션
 AnimInstance Class 에 CurrentPawnSpeed 변수 추가
 
 MyAnimInstance.h
