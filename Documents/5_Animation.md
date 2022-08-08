@@ -21,7 +21,7 @@ Animation Asset 을 드래그 하여 Output Pose 연결하고 Compile & Save
 ![image](https://user-images.githubusercontent.com/29656900/183335968-6894d57a-fad2-4580-a5d1-ceb13a11b5c7.png)
 
 ## AnimBP 세팅
-### 첫번째 방법 : MyCharacter AnimInstance 세팅
+### 첫번째 방법 : C++ 클레스 MyCharacter에서 AnimInstance 세팅
 AnimBP 레퍼런스 저장
 
 ![image](https://user-images.githubusercontent.com/29656900/183338372-f587912f-8261-4c7c-ad68-935cf3042074.png)
@@ -51,7 +51,7 @@ AMyCharacter::AMyCharacter()
  }
  ```
 
-### 번째 방법 : MyCharacter blueprint 세팅
+### 두번째 방법 : MyCharacter Blueprint 세팅
 AnimClass 를 MyAnimBP 로 세팅
 ![image](https://user-images.githubusercontent.com/29656900/183336199-03f9046c-cf66-4b05-b15d-22d1f55c28c5.png)
 
