@@ -30,7 +30,7 @@ AnimBP 레퍼런스 저장
 MyCharacter.h
 ```
 public:
-UPROPERTY()
+	UPROPERTY()
 	TSubclassOf<UAnimInstance> MALE_ANIM_CLASS;
 ```
 MyCharacter.cpp
@@ -38,7 +38,7 @@ MyCharacter.cpp
 AMyCharacter::AMyCharacter()
 {
 ...
-//AnimBlueprint'/Game/Blueprints/MyAnimBP.MyAnimBP'
+	//AnimBlueprint'/Game/Blueprints/MyAnimBP.MyAnimBP'
 	static ConstructorHelpers::FClassFinder<UAnimInstance> MALE_ANIM(TEXT("/Game/Blueprints/MyAnimBP.MyAnimBP_C"));
 	if (MALE_ANIM.Succeeded())
 	{
