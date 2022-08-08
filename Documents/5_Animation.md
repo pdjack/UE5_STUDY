@@ -118,4 +118,36 @@ Ground State에 기존 그래프를 복사한다.
 ![image](https://user-images.githubusercontent.com/29656900/183345378-0a29d8ab-989a-4940-af83-ee96a5827b2b.png)
 
 
+## Jump Animation
+MyCharacter.h
+```
+private:
+...
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Pawn, Meta=(AllowPrivateAccess=true))
+	bool IsInAir;
+```
+MyCharacter.cpp
+```
+UMyAnimInstance::UMyAnimInstance()
+{
+...
+	IsInAir = false;
+}
 
+void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
+{
+	Super::NativeUpdateAnimation(DeltaSeconds);
+
+	auto Pawn = TryGetPawnOwner();
+	if (::IsValid(Pawn))
+	{
+		CurrentPawnSpeed = Pawn->GetVelocity().Size();
+		
+		<b>auto Character = Cast<ACharacter>(Pawn);
+		if (Character)
+		{
+			IsInAir = Character->GetMovementComponent()->IsFalling();
+		}</b>
+	}
+}
+```
