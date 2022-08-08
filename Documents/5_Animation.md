@@ -61,11 +61,32 @@ Editor에서 실행한 화면
 
 
 ## 캐릭터 이동 애니메이션
-AnimInstance Class 에 CurrentPawnSpeed 변수 추가
 
 MyAnimInstance.h
 ```
+public:
+	UMyAnimInstance();
+	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Pawn, Meta=(AllowPrivateAccess=true))
 	float CurrentPawnSpeed;
+```
+MyAnimInstace.cpp
+```
+UMyAnimInstance::UMyAnimInstance()
+{
+	CurrentPawnSpeed = 0.0f;
+}
+
+void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
+{
+	Super::NativeUpdateAnimation(DeltaSeconds);
+
+	auto Pawn = TryGetPawnOwner();
+	if (::IsValid(Pawn))
+	{
+		CurrentPawnSpeed = Pawn->GetVelocity().Size();
+		
+	}
+}
 ```
