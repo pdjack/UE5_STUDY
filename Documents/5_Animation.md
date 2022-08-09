@@ -169,6 +169,7 @@ Ground -> Jump
 ![image](https://user-images.githubusercontent.com/29656900/183349456-50a8aecf-6c34-416e-ba92-7c7bc5024e66.png)
 
 Jump -> Fall Loop
+Jump Start 애니메이션 지정이 되있어야 하고, 오른쪽 클릭해서 "remain" 검색 
 ![image](https://user-images.githubusercontent.com/29656900/183553944-0251550f-76c0-4880-8945-5a5a6598f38e.png)
 
 
@@ -178,6 +179,7 @@ Fall Loop ->Land
 ![image](https://user-images.githubusercontent.com/29656900/183349407-195e7a8e-fb23-4969-a929-5294b9eedfa9.png)
 
 Land -> Ground
+Jump Land 애니메이션 지정이 되있어야 하고, 오른쪽 클릭해서 "remain" 검색 
 ![image](https://user-images.githubusercontent.com/29656900/183554008-c9a5a351-76a9-4634-9575-ba43d85dfe77.png)
 
 
