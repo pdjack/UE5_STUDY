@@ -53,4 +53,7 @@ void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInerrupted)
 }
 ```
 
+### Montage AnimNotify
+![image](https://user-images.githubusercontent.com/29656900/183911969-b9e251bf-24a6-4e56-997a-69ec55eb262c.png)
+
 
