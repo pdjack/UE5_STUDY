@@ -20,7 +20,7 @@ MyAnimInstance.cpp
 AMyAnimInstance::AMyAnimInstance()
 {
 ...
-  static ConstructorHelpers::FObjectFinder<UAnimMontage> ATTACK_MONTAGE(TEXT("/Game/Book/Animations/SK_Mannequin_Skeleton_Montage.SK_Mannequin_Skeleton_Montage"));
+  	static ConstructorHelpers::FObjectFinder<UAnimMontage> ATTACK_MONTAGE(TEXT("Game/Blueprints/KwangAttackMontage.KwangAttackMontage"));
 	if (ATTACK_MONTAGE.Succeeded())
 	{
 		AttackMontage = ATTACK_MONTAGE.Object;
