@@ -57,4 +57,5 @@ void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInerrupted)
 Norifies 트랙위에서 마우스 오른쪽 클릭
 ![image](https://user-images.githubusercontent.com/29656900/183911969-b9e251bf-24a6-4e56-997a-69ec55eb262c.png)
 
+![image](https://user-images.githubusercontent.com/29656900/183912334-0f46bb95-d84e-48af-893d-3b542dabe7ee.png)
 
