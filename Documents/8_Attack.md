@@ -7,7 +7,7 @@ MyCharacter.h
 ```
 public:
 ...
-void Attack();
+  void Attack();
 
   UFUNCTION()
 	void OnAttackMontageEnded(UAnimMontage* Montage, bool bInerrupted);
@@ -15,8 +15,10 @@ void Attack();
   
   private:
   ...
+  bool IsAttacking = false;
+  
   UPROPERTY()
-	class UMyAnimInstance* MyAnim;
+  class UMyAnimInstance* MyAnim;
 ```
 
 
@@ -43,6 +45,11 @@ void AMyCharacter::Attack()
 		MyAnim->PlayAttackMontage();
 		IsAttacking = true;
 	}
+}
+
+void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInerrupted)
+{
+	IsAttacking = false;
 }
 ```
 
