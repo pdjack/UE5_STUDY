@@ -61,3 +61,21 @@ Norifies 트랙위에서 마우스 오른쪽 클릭
 
 공격중 히트 타이밍에 맞게 AttackHitCheck Notify 위치 조정 
 ![image](https://user-images.githubusercontent.com/29656900/183912475-2d37f9d1-09eb-40ed-9a1a-1b2fb9ae35ec.png)
+
+
+### AnimInstance 
+MyAnimInstance.h
+```
+public:
+...
+	UFUNCTION()
+	void AnimNotify_AttackHitCheck();
+```
+MyAnimInstance.cpp
+```
+void UMyAnimInstance::AnimNotify_AttackHitCheck()
+{
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AnimNofify_HitCheck"));
+}
+```
