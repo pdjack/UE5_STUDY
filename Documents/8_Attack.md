@@ -54,6 +54,7 @@ void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInerrupted)
 ```
 
 ### Montage AnimNotify
+Norifies 트랙위에서 마우스 오른쪽 클릭
 ![image](https://user-images.githubusercontent.com/29656900/183911969-b9e251bf-24a6-4e56-997a-69ec55eb262c.png)
 
 
