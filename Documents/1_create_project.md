@@ -17,3 +17,7 @@
 ![image](https://user-images.githubusercontent.com/29656900/184522776-eafcd61e-063a-47e4-b69a-8f519290c8b3.png)
 
 ![image](https://user-images.githubusercontent.com/29656900/184522768-d6e582fe-d905-437a-ae10-2d90fa373d2f.png)
+
+world setting
+![image](https://user-images.githubusercontent.com/29656900/184522790-6cddff7c-d0a5-4b4b-951d-8dde762b329f.png)
+
