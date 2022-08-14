@@ -21,3 +21,6 @@
 world setting
 ![image](https://user-images.githubusercontent.com/29656900/184522790-6cddff7c-d0a5-4b4b-951d-8dde762b329f.png)
 
+
+게임모드 C++ 클래스 기반으로 블루프린트 생성후 월드 세팅
+![image](https://user-images.githubusercontent.com/29656900/184522947-a75ca3a6-2a35-4ecb-b64a-347bf17dc3bd.png)
