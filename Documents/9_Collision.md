@@ -5,7 +5,7 @@
 - Default Response : Ignore
 ![image](https://user-images.githubusercontent.com/29656900/182603030-0e8968d5-5cf4-4ab2-9871-ae354264edc3.png)
 
-- TraceChannel 에서 Pawn에 대한 반응을 Block으로 설정 
+- 프리셋 에서 Pawn에 대한 반응을 Block으로 설정 
 ![image](https://user-images.githubusercontent.com/29656900/184578133-d76bf5a7-4657-4794-88ca-40227db4acab.png)
 ![image](https://user-images.githubusercontent.com/29656900/184578151-fe049c78-84e7-4289-99e4-4bc4143b33f8.png)
 
