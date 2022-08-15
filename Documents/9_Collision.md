@@ -72,9 +72,6 @@ void AMyCharacter::AttackHitCheck()
 ```
 
 
-TakeDamage 받으면 Dead
-
-![image](https://user-images.githubusercontent.com/29656900/182615041-c13245ec-e4db-4f42-a777-1b23c1c19922.png)
 
 MyCharacter.h
 ```
@@ -141,3 +138,8 @@ void AMyCharacter::PostInitializeComponents()
 }
 
 ```
+
+### Dead Animation
+TakeDamage 받으면 Dead
+
+![image](https://user-images.githubusercontent.com/29656900/182615041-c13245ec-e4db-4f42-a777-1b23c1c19922.png)
