@@ -141,6 +141,28 @@ float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEve
 ### 애니메이션 블루프린트
 ![image](https://user-images.githubusercontent.com/29656900/184580345-02668d2a-8516-4cfc-b1f9-11260ef00d43.png)
 
+
+### 죽을때 공격자 방향으로 캐릭터 로테이션 & 충돌되지 않도록 설정
+
+```
+float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	UE_LOG(LogTemp, Warning, TEXT("Actor : %s took Damage : %f"), *GetName(), FinalDamage);
+	
+	if (FinalDamage > 0.0f)
+	{
+		MyAnim->SetDeadAnim();
+
+		FVector Dir = DamageCauser->GetActorLocation() - GetActorLocation();
+		Dir.Z = 0.0f;
+		FQuat LookAtRot = FRotationMatrix::MakeFromX(Dir).ToQuat();
+		SetActorRotation(LookAtRot);
+		SetActorEnableCollision(false);
+	}
+}
+```
+
 # Weapon
 
 MyCharacter.h 
