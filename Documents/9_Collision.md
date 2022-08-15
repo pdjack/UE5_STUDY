@@ -115,7 +115,7 @@ private:
 	bool bDreadAnim;
 ...
 ```
-![image](https://user-images.githubusercontent.com/29656900/182615041-c13245ec-e4db-4f42-a777-1b23c1c19922.png)
+![image](https://user-images.githubusercontent.com/29656900/184580345-02668d2a-8516-4cfc-b1f9-11260ef00d43.png)
 
 
 # Weapon
