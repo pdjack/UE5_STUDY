@@ -98,6 +98,12 @@ float ALKCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEv
 ![image](https://user-images.githubusercontent.com/29656900/184578098-a813036f-f55a-4eda-9e91-93566ac759fb.png)
 
 
+### Dead Animation
+TakeDamage 받으면 Dead
+
+![image](https://user-images.githubusercontent.com/29656900/182615041-c13245ec-e4db-4f42-a777-1b23c1c19922.png)
+
+
 # Weapon
 
 MyCharacter.h 
@@ -138,8 +144,3 @@ void AMyCharacter::PostInitializeComponents()
 }
 
 ```
-
-### Dead Animation
-TakeDamage 받으면 Dead
-
-![image](https://user-images.githubusercontent.com/29656900/182615041-c13245ec-e4db-4f42-a777-1b23c1c19922.png)
