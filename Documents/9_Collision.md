@@ -138,7 +138,7 @@ float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEve
 }
 ```
 
-
+### 애니메이션 블루프린트
 ![image](https://user-images.githubusercontent.com/29656900/184580345-02668d2a-8516-4cfc-b1f9-11260ef00d43.png)
 
 # Weapon
