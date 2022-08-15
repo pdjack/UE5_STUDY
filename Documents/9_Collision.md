@@ -5,6 +5,10 @@
 - Default Response : Ignore
 ![image](https://user-images.githubusercontent.com/29656900/182603030-0e8968d5-5cf4-4ab2-9871-ae354264edc3.png)
 
+- TraceChannel 에서 Pawn에 대한 반응을 Block으로 설정 
+![image](https://user-images.githubusercontent.com/29656900/184578133-d76bf5a7-4657-4794-88ca-40227db4acab.png)
+![image](https://user-images.githubusercontent.com/29656900/184578151-fe049c78-84e7-4289-99e4-4bc4143b33f8.png)
+
 Config/DefaultEngine.ini
 
 ![image](https://user-images.githubusercontent.com/29656900/182603137-a6a790a0-767a-4328-b86c-1b27f82ecdf0.png)
@@ -94,13 +98,6 @@ float ALKCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEv
 
 캐릭터BP 를 레벨에 드래그해서 놓은 다음 Attack을 해보자
 ![image](https://user-images.githubusercontent.com/29656900/184578041-d944355f-9089-4176-942c-88da222cd28c.png)
-
-디버그로 캡슐을 그릴때 붉은 색은 충돌감지가 안됬다는 뜻
-TraceChannel 에서 Pawn에 대한 반응을 설정해줘야 한다.
-![image](https://user-images.githubusercontent.com/29656900/184578133-d76bf5a7-4657-4794-88ca-40227db4acab.png)
-![image](https://user-images.githubusercontent.com/29656900/184578151-fe049c78-84e7-4289-99e4-4bc4143b33f8.png)
-
-
 ![image](https://user-images.githubusercontent.com/29656900/184578098-a813036f-f55a-4eda-9e91-93566ac759fb.png)
 
 
