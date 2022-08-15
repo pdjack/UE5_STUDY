@@ -191,8 +191,7 @@ void AMyCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 
-	MyAnim = Cast<UMyAnimInstance>(GetMesh()->GetAnimInstance());
-	MyAnim->OnAttackHitCheck.AddUObject(this, &AMyCharacter::AttackHitCheck);
+	...
 	
 	FName WeaponSocket(TEXT("hand_rSocket"));
 	if (GetMesh()->DoesSocketExist(WeaponSocket))
