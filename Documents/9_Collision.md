@@ -101,6 +101,20 @@ float ALKCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEv
 ### Dead Animation
 TakeDamage 받으면 Dead
 
+MyCharacter.h
+```
+public:
+	UPROPERTY(BlueprintReadOnly, Category = Character)
+	bool IsDead ;
+```
+MyAnimInstace.h
+```
+private:
+...
+	UPROPERTY(BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
+	bool bDreadAnim;
+...
+```
 ![image](https://user-images.githubusercontent.com/29656900/182615041-c13245ec-e4db-4f42-a777-1b23c1c19922.png)
 
 
