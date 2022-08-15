@@ -92,6 +92,12 @@ float ALKCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEv
 }
 ```
 
+캐릭터BP 를 레벨에 드래그해서 놓은 다음 Attack을 해보자
+![image](https://user-images.githubusercontent.com/29656900/184577511-a89cb4de-3d53-47de-b228-bf93d3deafc3.png)
+
+디버그로 캡슐을 그릴때 붉은 색은 충돌감지가 안됬다는 뜻
+TraceChannel 에서 Pawn에 대한 반응을 설정해줘야 한다.
+
 
 # Weapon
 
