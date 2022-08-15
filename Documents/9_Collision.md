@@ -101,22 +101,45 @@ float ALKCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEv
 ### Dead Animation
 TakeDamage 받으면 Dead
 
-MyCharacter.h
-```
-public:
-	UPROPERTY(BlueprintReadOnly, Category = Character)
-	bool IsDead ;
-```
+
 MyAnimInstace.h
 ```
+public :
+	void SetDeadAnim();
 private:
 ...
 	UPROPERTY(BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
 	bool bDreadAnim;
 ...
 ```
-![image](https://user-images.githubusercontent.com/29656900/184580345-02668d2a-8516-4cfc-b1f9-11260ef00d43.png)
+MyAnimInstance.cpp
+```
+void UMyAnimInstace::SetDeadAnim()
+{
+	bDeadAnim = true;
+}
 
+```
+
+
+
+```
+float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	UE_LOG(LogTemp, Warning, TEXT("Actor : %s took Damage : %f"), *GetName(), FinalDamage);
+
+	if (MyAnim)
+	{
+		MyAnim->SetDeadAnim();
+	}
+
+	return FinalDamage;
+}
+```
+
+
+![image](https://user-images.githubusercontent.com/29656900/184580345-02668d2a-8516-4cfc-b1f9-11260ef00d43.png)
 
 # Weapon
 
