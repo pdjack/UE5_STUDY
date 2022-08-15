@@ -79,3 +79,45 @@ void UMyAnimInstance::AnimNotify_AttackHitCheck()
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AnimNofify_HitCheck"));
 }
 ```
+
+### AttackHitCheck Delegate
+MyAnimInstance.h
+```
+...
+DECLARE_MULTICAST_DELEGATE(FOnAttackHitCheckDelegate);
+
+UCLASS()
+class PROJECTLK_API UMyAnimInstance : public UAnimInstance
+{
+	GENERATED_BODY()
+public:
+...
+
+FOnAttackHitCheckDelegate OnAttackHitCheck;
+...
+};
+```
+MyCharacter.cpp
+```
+void ALKCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+...
+	if (MyAnim)
+		MyAnim->OnAttackHitCheck.AddUObject(this, &AMyCharacter::AttackCheck);
+...
+}
+```
+### AttackHitCheck
+MyCharacter.h
+```
+
+void AttackHitCheck();
+```
+```
+void AMyCharacter::AttackHitCheck()
+{
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AttackHitCheck"));
+}
+```
