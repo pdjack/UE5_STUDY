@@ -120,8 +120,8 @@ void UMyAnimInstace::SetDeadAnim()
 }
 
 ```
-
-
+### 캐릭터 TakeDamage 함수 
+MyCharacter.cpp
 
 ```
 float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
