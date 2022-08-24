@@ -1,4 +1,4 @@
-Name,Level,MaxMP,Attack,DropExp,NextExp
+Name,Level,MaxHP,Attack,DropExp,NextExp
 1,1,100,10,10,30
 2,2,200,15,15,80
 3,3,300,20,20,150
