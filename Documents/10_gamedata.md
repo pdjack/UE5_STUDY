@@ -118,3 +118,50 @@ MyCharacterData 를 선택한다
 
 
 
+### UMyInstance 클래스에 멤버 추가
+
+MyGameInstance.h
+```
+UCLASS()
+class CPPTEST01_API UMyGameInstance : public UGameInstance
+{
+public:
+...
+FMyCharacterData* GetMyCharacterData(int32 Level);
+
+private:
+	UPROPERTY()
+	class UDataTable* MyCharacterTable;
+
+...
+}
+```
+
+MyGameInstance.cpp
+```
+UMyGameInstance::UMyGameInstance()
+{
+	FString CharacterDataPath = TEXT("/Game/GameData/MyCharacterData.MyCharacterData");
+	static ConstructorHelpers::FObjectFinder<UDataTable> DT_MYCHARACTER(*CharacterDataPath);
+
+	if (DT_MYCHARACTER.Succeeded())
+	{
+		MyCharacterTable = DT_MYCHARACTER.Object;
+		ensure(MyCharacterTable->GetRowMap().Num() > 0);
+	}
+}
+
+void UMyGameInstance::Init()
+{
+	Super::Init();
+
+	UE_LOG(LogTemp, Warning, TEXT("DropExp of Level 2 MyCharacter : %d"), GetMyCharacterData(2)->DropExp);
+}
+
+FMyCharacterData* UMyGameInstance::GetMyCharacterData(int32 Level)
+{
+	return MyCharacterTable->FindRow<FMyCharacterData>(* FString::FromInt(Level), TEXT(""));
+}
+```
+에셋 경로 복사하기
+![image](https://user-images.githubusercontent.com/29656900/186432641-b6338c6a-db47-4c08-831c-2954772ff8cb.png)
