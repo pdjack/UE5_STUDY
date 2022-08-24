@@ -48,7 +48,7 @@ void UMyGameInstance::Init()
 ```
 
 # FMyCharacterData Class
-MyCharacterData.csv 파일
+### MyCharacterData.csv 파일
 ```
 Name,Level,MaxMP,Attack,DropExp,NextExp
 1,1,100,10,10,30
@@ -59,8 +59,8 @@ Name,Level,MaxMP,Attack,DropExp,NextExp
 6,6,600,35,35,-1
 ```
 
-MyGameInstanceInstance.h 에 sturct 정의
-
+### MyGameInstanceInstance.h 에 sturct 정의
+Name열 데이터는 언리얼 엔진에서 자동으로 키값으로 사용하기 때문에 Name열은 선언에서 제외한다.
 ```
 ...
 #include "Engine/DataTable.h"
