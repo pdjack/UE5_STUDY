@@ -104,7 +104,9 @@ GameData 폴더를 생성한다
 ![image](https://user-images.githubusercontent.com/29656900/186429603-d02b6122-7739-46f4-ab95-1a002c4f8238.png)
 임포트 버튼을 클릭한다
 ![image](https://user-images.githubusercontent.com/29656900/186429770-fbcb040b-300f-4ace-88f1-5455e4a98fd4.png)
+
 MyCharacterData 를 선택한다
+
 ![image](https://user-images.githubusercontent.com/29656900/186429963-388a00d8-591e-4cb8-8b4f-72f17ebaeffb.png)
 
 게임 데이터 에셋이 생성된 화면
