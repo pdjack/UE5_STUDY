@@ -44,4 +44,9 @@ public:
 	UMyGameInstance();
 
 	virtual void Init() override;
+	FMyCharacterData* GetMyCharacterData(int32 Level);
+
+private:
+	UPROPERTY()
+	class UDataTable* MyCharacterTable;
 };
