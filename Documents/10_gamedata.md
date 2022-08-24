@@ -50,7 +50,7 @@ void UMyGameInstance::Init()
 # FMyCharacterData Class
 ### MyCharacterData.csv 파일
 ```
-Name,Level,MaxMP,Attack,DropExp,NextExp
+Name,Level,MaxHP,Attack,DropExp,NextExp
 1,1,100,10,10,30
 2,2,200,15,15,80
 3,3,300,20,20,150
@@ -98,3 +98,23 @@ class CPPTEST01_API UMyGameInstance : public UGameInstance
 	GENERATED_BODY()
   ...
 ```
+
+### csv 임포트
+
+GameData 폴더를 생성한다
+
+![image](https://user-images.githubusercontent.com/29656900/186429603-d02b6122-7739-46f4-ab95-1a002c4f8238.png)
+
+임포트 버튼을 클릭한다
+
+![image](https://user-images.githubusercontent.com/29656900/186429770-fbcb040b-300f-4ace-88f1-5455e4a98fd4.png)
+
+MyCharacterData 를 선택한다
+
+![image](https://user-images.githubusercontent.com/29656900/186429963-388a00d8-591e-4cb8-8b4f-72f17ebaeffb.png)
+
+게임 데이터 에셋이 생성된 화면
+![image](https://user-images.githubusercontent.com/29656900/186430412-0b512bc7-a583-446f-962e-a0a3d0ef1df9.png)
+
+
+
