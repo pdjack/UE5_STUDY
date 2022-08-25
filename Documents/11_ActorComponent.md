@@ -2,3 +2,15 @@
 
 툴>새로운 C++ 클래스.. 메뉴를 선택하고 다이얼로그에서 ActorComponent 를 선택한 후 오브젝트 이름은 MyCharacterStatComponent 라고 정한다.
 
+![image](https://user-images.githubusercontent.com/29656900/186672608-1475078c-90ae-452d-8944-11469d6f8900.png)
+
+
+해당 클래스가 컴파일 되면 이제부터는 여타 컴포넌트와 동일하게 액터에 부착할 수 있다. MyCharacter 클래스에 새로운 컴포넌트를 멤버 변수로 선언한다.
+MyCharacter.h
+```
+public:
+...
+UPROPERTY(VisibleAnywhere, Category=Stat)
+class UMyCharacterStatComponent* CharacterStat;
+...
+```
