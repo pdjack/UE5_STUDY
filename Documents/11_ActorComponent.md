@@ -116,3 +116,4 @@ void UCharacterStatComponent::SetNewLevel(int32 NewLevel)
 }
 
 ```
+CurrentHP값은 게임을 시작할때마다 변경되므로, 이 값을 보관하는것은 의미가 없고, Transient 키워드를 추가해 해당 속성을 직렬화에서 제외하는 것이 좋다.
