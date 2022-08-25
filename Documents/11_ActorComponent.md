@@ -161,3 +161,61 @@ float UCharacterStatComponent::GetAttack()
 ```
 
 ### MyCharacter
+
+MyCharacter.cpp
+```
+void AMyCharacter::PostInitializeComponents()
+{
+...
+	CharacterStat->OnHPIsZero.AddLambda([this]() -> void {
+		
+		UE_LOG(LogTemp, Warning, TEXT("OnHPIsZero"));
+		MyAnim->SetAnimDead();
+
+		//FVector Dir = DamageCauser->GetActorLocation() - GetActorLocation();
+		//Dir.Z = 0.0f;
+		//FQuat LookAtRot = FRotationMatrix::MakeFromX(Dir).ToQuat();
+		//SetActorRotation(LookAtRot);
+
+		SetActorEnableCollision(false);
+
+	});
+	
+}
+
+float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	
+	UE_LOG(LogTemp, Warning, TEXT("ACtor : %s took Damage : %f"), *GetName(), FinalDamage);
+	if (FinalDamage > 0.0f)
+	{
+		CharacterStat->SetDamage(FinalDamage);
+
+		/*MyAnim->SetAnimDead();
+
+		FVector Dir = DamageCauser->GetActorLocation() - GetActorLocation();
+		Dir.Z = 0.0f;
+		FQuat LookAtRot = FRotationMatrix::MakeFromX(Dir).ToQuat();
+		SetActorRotation(LookAtRot);
+		SetActorEnableCollision(false);*/
+	}
+	return FinalDamage;
+}
+
+
+void AMyCharacter::AttackHitCheck()
+{
+...
+	if (bResult)
+	{
+		if (HitResult.GetActor())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Hit ACtor Name : %s"), *HitResult.GetActor()->GetName());
+
+			FDamageEvent DamageEvent;
+			HitResult.GetActor()->TakeDamage(CharacterStat->GetAttack(), DamageEvent, GetController(), this);
+		}
+	}
+}
+```
