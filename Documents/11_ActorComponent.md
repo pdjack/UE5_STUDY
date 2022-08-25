@@ -27,3 +27,43 @@ AMyCharacter::AMyCharacter()
 ...
   CharacterStat = CreateDefaultSubobject<UCharacterStatComponent>(TEXT("CHARACTERSTAT"));
 }
+
+### Actor Component 초기화 로직
+
+InitializeComponent 함수는 액터의 PostInitializeComponents 함수가 호출되기 바로 전에 호출된다.
+
+CharacterStatComponent.h
+```
+#include "EngineMinimal.h"
+
+...
+
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+class CPPTEST01_API UCharacterStatComponent : public UActorComponent
+{
+...
+protected:
+...
+  virtual void InitializeComponent() override;
+  
+...
+
+```
+
+CharacterStatComponent.cpp
+```
+// Sets default values for this component's properties
+UCharacterStatComponent::UCharacterStatComponent()
+{
+	
+	PrimaryComponentTick.bCanEverTick = false;
+  bWantsInitializeComponent = true;
+
+}
+
+UCharacterStatComponent::InitializeComponent()
+{
+  Super::InitializeComponent();
+}
+
+```
