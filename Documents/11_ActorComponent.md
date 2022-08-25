@@ -66,3 +66,53 @@ UCharacterStatComponent::InitializeComponent()
 }
 
 ```
+
+### CharacterStatComponent에 변수 & 함수 추가 
+
+CharacterStatComponent.h
+```
+public:
+	void SetNewLevel(int32 NewLevel);
+private:
+	struct FMyCharacterData* CurrentStatData = nullptr;
+	
+	UPROPERTY(EditInstanceOnly, Category = Stat, Meta=(AllowPrivateAccess = true))
+	int32 Level;
+	
+	UPROPERTY(Transient, VisibleInstanceOnly, Category = Stat, Meta=(AllowPrivateAccess = true))
+	float CurrentHP;
+```
+CharacterStatComponent.cpp
+```
+...
+#include "MyGameInstance.h"
+
+UCharacterStatComponent::UCharacterStatComponent()
+{
+...
+	Level = 1;
+}
+
+void UCharacterStatComponent::InitializeComponent()
+{
+...
+	SetNewLevel(Level);
+}
+
+void UCharacerStatComponent::SetNewLevel(int32 NewLevel)
+{
+	auto MyGameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+	ensure(nullptr != MyGameInstance);
+	CurrentStatData = MyGameInstance->GetMyCharacterData(NewLevel);
+	if(nullptr != CurrentStatData)
+	{
+		Level = NewLevel;
+		CurrentHP = CurrentStatData->MaxHP;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Level (%d) data doesn't exist"), NewLevel);
+	}
+}
+
+```
