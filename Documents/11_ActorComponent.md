@@ -12,6 +12,6 @@ MyCharacter.h
 public:
 ...
 UPROPERTY(VisibleAnywhere, Category=Stat)
-class UMyCharacterStatComponent* CharacterStat;
+class UCharacterStatComponent* CharacterStat;
 ...
 ```
