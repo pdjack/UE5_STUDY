@@ -15,3 +15,14 @@ UPROPERTY(VisibleAnywhere, Category=Stat)
 class UCharacterStatComponent* CharacterStat;
 ...
 ```
+MyCharacter.cpp
+```
+...
+#include "CharacterStatComponent.h"
+...
+
+AMyCharacter::AMyCharacter()
+{
+...
+  CharacterStat = CreateDefaultSubobject<UCharacterStatComponent>(TEXT("CHARACTERSTAT"));
+}
