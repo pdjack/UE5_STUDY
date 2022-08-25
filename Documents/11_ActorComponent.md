@@ -67,7 +67,7 @@ UCharacterStatComponent::InitializeComponent()
 
 ```
 
-### CharacterStatComponent에 변수 & 함수 추가 
+### CharacterStatComponent에 CurrentHP , Level 관련 변수 & 함수 추가 
 
 CharacterStatComponent.h
 ```
@@ -117,3 +117,47 @@ void UCharacterStatComponent::SetNewLevel(int32 NewLevel)
 
 ```
 CurrentHP값은 게임을 시작할때마다 변경되므로, 이 값을 보관하는것은 의미가 없고, Transient 키워드를 추가해 해당 속성을 직렬화에서 제외하는 것이 좋다.
+
+### CharacterStatComponent 에 Damage 관련 코드 추가
+
+CharacterStatComponent.h
+```
+...
+
+DECLARE_MULTICAST_DELEGATE(FOnHPIsZeroDelegate);
+
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+class CPPTEST01_API UCharacterStatComponent : public UActorComponent
+{
+	...
+
+public:
+...
+	void SetDamage(float NewDamage);
+	float GetAttack();
+	
+	FOnHPIsZeroDelegate OnHPIsZero;
+...
+```
+
+CharacterStatComponent.cpp
+```
+void UCharacterStatComponent::SetDamage(float NewDamage)
+{
+	ensure(nullptr != CurrentStatData);
+	CurrentHP = FMath::Clamp<float>(CurrentHP - NewDamage, 0.0f, CurrentStatData->MaxHP);
+	if(CurrentHP <= 0.0f)
+	{
+		OnHPIsZero.Broadcast();
+	}
+}
+
+float UCharacterStatComponent::GetAttack()
+{
+	ensure(nullptr != CurrentStatData, 0.0f);
+	return CurrentStatData->Attack;
+}
+
+```
+
+### MyCharacter
