@@ -99,7 +99,7 @@ void UCharacterStatComponent::InitializeComponent()
 	SetNewLevel(Level);
 }
 
-void UCharacerStatComponent::SetNewLevel(int32 NewLevel)
+void UCharacterStatComponent::SetNewLevel(int32 NewLevel)
 {
 	auto MyGameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 	ensure(nullptr != MyGameInstance);
