@@ -4,6 +4,8 @@
 #include "MyCharacter.h"
 #include "MyAnimInstance.h"
 #include "CharacterStatComponent.h"
+#include "Components/WidgetComponent.h"
+#include "MyCharacterWidget.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -20,6 +22,18 @@ AMyCharacter::AMyCharacter()
 	SpringArm->SetRelativeRotation(FRotator(-15.0f, 0.0f, 0.0f));
 
 	CharacterStat = CreateDefaultSubobject<UCharacterStatComponent>(TEXT("CHARACTERSTAT"));
+
+	HPBarWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("HPBARWIDGET"));
+	HPBarWidget->SetupAttachment(GetMesh());
+
+	HPBarWidget->SetRelativeLocation(FVector(0.0f, 0.0f, 180.0f));
+	HPBarWidget->SetWidgetSpace(EWidgetSpace::Screen);
+	static ConstructorHelpers::FClassFinder<UUserWidget> UI_HUD(TEXT("/Game/UI/CharacterHPBar.CharacterHPBar_C"));
+	if (UI_HUD.Succeeded())
+	{
+		HPBarWidget->SetWidgetClass(UI_HUD.Class);
+		HPBarWidget->SetDrawSize(FVector2D(150.0f, 30.0f));
+	}
 
 	//AnimBlueprint'/Game/Blueprints/MyAnimBP.MyAnimBP'
 	/*static ConstructorHelpers::FClassFinder<UAnimInstance> MALE_ANIM(TEXT("/Game/Blueprints/MyAnimBP.MyAnimBP_C"));
@@ -65,6 +79,11 @@ void AMyCharacter::BeginPlay()
 	//MyAnim = Cast<UMyAnimInstance>(GetMesh()->GetAnimInstance());
 	//MyAnim->OnAttackHitCheck.AddUObject(this, &AMyCharacter::AttackHitCheck);
 	
+	auto CharacterWidget = Cast<UMyCharacterWidget>(HPBarWidget->GetUserWidgetObject());
+	if (nullptr != CharacterWidget)
+	{
+		CharacterWidget->BindCharacterStat(CharacterStat);
+	}
 	
 }
 
