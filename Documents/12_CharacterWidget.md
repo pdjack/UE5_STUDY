@@ -99,11 +99,12 @@ DECLARE_MULTICAST_DELEGATE(FOnHPChangedDelegate);
 ...
 
 public:
+...
 	void SetHP(float NewHP);
 	float GetHPRatio();
 	
 	FOnHPChangedDelegate OnHPChanged;
-
+...
 ```
 
 CharacterStatComponent.cpp
@@ -217,3 +218,25 @@ void UMyCharacterWidget::UpdateHPWidget()
 	}
 }
 ```
+
+
+이제 캐릭터의 BeginPlay 함수에서 캐릭터 컴포넌트와 UI 위젯을 연결한다.
+
+MyCharacter.cpp
+```
+...
+#include "MyCharacterWidget.h"
+void AMyCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	auto CharacterWidget = Cast<UCharacterWidget>(HPBarWidget->GetUserWidgetObject());
+	if(nullptr != CharacterWidget)
+	{
+		CharacterWidget->BindCharacterStat(CharacterStat);
+	}
+}
+```
+
+위젯블루프린트 부모클래스를 MyCharacterWidget으로 변경한다.
+![image](https://user-images.githubusercontent.com/29656900/186911337-a0c7e7d2-2978-4b52-b874-67bc881a2d51.png)
