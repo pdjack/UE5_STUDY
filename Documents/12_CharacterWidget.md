@@ -55,6 +55,7 @@ UMG 모듈의 Public/Components 폴더에는 현재 사용 중인 WidgetComponen
 MyCharacter.cpp
 ```
 ...
+#include "Components/WidgetComponent.h"
 #include "MyCharacterWidget.h"
 
 AMyCharacter::AMyCharacter()
