@@ -10,4 +10,11 @@ Widget Bluprint 생성 하고 이름은 CharacterHPBar
 ![image](https://user-images.githubusercontent.com/29656900/186853236-b69c079b-7250-481f-9993-9f1e1b457734.png)
 
 
+Fill Screen 에서  Custom 선택
 
+![image](https://user-images.githubusercontent.com/29656900/186854011-b1d9e5ee-6445-470a-9072-653e3b37cd69.png)
+
+
+Width 150 Height 50
+
+![image](https://user-images.githubusercontent.com/29656900/186854164-f54d2685-63c5-41d6-a4c8-0910cebe2006.png)
