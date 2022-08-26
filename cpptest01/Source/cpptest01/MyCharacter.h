@@ -56,6 +56,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Weapon)
 	UStaticMeshComponent* Weapon;
 
+	UPROPERTY(VisibleAnywhere, Category = Stat)
+	class UCharacterStatComponent* CharacterStat;
+
 private:
 	UPROPERTY()
 	class UMyAnimInstance* MyAnim;

@@ -3,6 +3,7 @@
 
 #include "MyCharacter.h"
 #include "MyAnimInstance.h"
+#include "CharacterStatComponent.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -17,6 +18,8 @@ AMyCharacter::AMyCharacter()
 	SpringArm->SetupAttachment(GetCapsuleComponent());
 	SpringArm->TargetArmLength = 400.0f;
 	SpringArm->SetRelativeRotation(FRotator(-15.0f, 0.0f, 0.0f));
+
+	CharacterStat = CreateDefaultSubobject<UCharacterStatComponent>(TEXT("CHARACTERSTAT"));
 
 	//AnimBlueprint'/Game/Blueprints/MyAnimBP.MyAnimBP'
 	/*static ConstructorHelpers::FClassFinder<UAnimInstance> MALE_ANIM(TEXT("/Game/Blueprints/MyAnimBP.MyAnimBP_C"));
@@ -84,6 +87,20 @@ void AMyCharacter::PostInitializeComponents()
 
 		Weapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("hand_rSocket"));
 	}
+
+	CharacterStat->OnHPIsZero.AddLambda([this]() -> void {
+		
+		UE_LOG(LogTemp, Warning, TEXT("OnHPIsZero"));
+		MyAnim->SetAnimDead();
+
+		//FVector Dir = DamageCauser->GetActorLocation() - GetActorLocation();
+		//Dir.Z = 0.0f;
+		//FQuat LookAtRot = FRotationMatrix::MakeFromX(Dir).ToQuat();
+		//SetActorRotation(LookAtRot);
+
+		SetActorEnableCollision(false);
+
+	});
 }
 
 // Called to bind functionality to input
@@ -181,7 +198,7 @@ void AMyCharacter::AttackHitCheck()
 			UE_LOG(LogTemp, Warning, TEXT("Hit ACtor Name : %s"), *HitResult.GetActor()->GetName());
 
 			FDamageEvent DamageEvent;
-			HitResult.GetActor()->TakeDamage(50.0f, DamageEvent, GetController(),this);
+			HitResult.GetActor()->TakeDamage(CharacterStat->GetAttack(), DamageEvent, GetController(), this);
 		}
 	}
 
@@ -194,13 +211,15 @@ float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEve
 	UE_LOG(LogTemp, Warning, TEXT("ACtor : %s took Damage : %f"), *GetName(), FinalDamage);
 	if (FinalDamage > 0.0f)
 	{
-		MyAnim->SetAnimDead();
+		CharacterStat->SetDamage(FinalDamage);
+
+		/*MyAnim->SetAnimDead();
 
 		FVector Dir = DamageCauser->GetActorLocation() - GetActorLocation();
 		Dir.Z = 0.0f;
 		FQuat LookAtRot = FRotationMatrix::MakeFromX(Dir).ToQuat();
 		SetActorRotation(LookAtRot);
-		SetActorEnableCollision(false);
+		SetActorEnableCollision(false);*/
 	}
 	return FinalDamage;
 }
