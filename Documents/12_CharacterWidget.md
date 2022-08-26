@@ -89,6 +89,64 @@ AMyCharacter::AMyCharacter()
 이제 캐릭터의 스탯이 변경되면 이를 UI 에 전달해 프로그레스바가 변경되도록 기능을 구현해보자. UI 의 로직은 애님 인스턴스와 유사하게 C++ 클래스에서 미리 만들어 제공할 수 있는데, 위젯 블루프린트가 사용하는 기반 C++ 클래스는 UserWidget 이다. UserWidget 을 상속받은 새로운 클래스를 생성하고 이름을 MyCharacterWidget 으로 정한다.
 ![image](https://user-images.githubusercontent.com/29656900/186857804-4d555dc7-d5f2-4804-8c3e-e0e25b06713c.png)
 
+
+해당 클래스는 캐릭터 스탯 정보가 저장돼 있는 CharacterStatComponent와 연동해 캐릭터의 스탯이 변화할 때마다 프로그레스바의 내용을 업데이트할 것이다. 이번에도 상호 의존성을 가지지않게 CharacterStatComponent에 델리게이트를 하나 선언하고 컴포넌트의 HP 값이 변할 때마다 UI 위젯의 값이 자동으로 변경되도록 설계해본다.
+
+CharacterStatComponent.h
+```
+...
+DECLARE_MULTICAST_DELEGATE(FOnHPChangedDelegate);
+...
+
+public:
+	void SetHP(float NewHP);
+	float GetHPRatio();
+	
+	FOnHPChangedDelegate OnHPChanged;
+
+```
+
+CharacterStatComponent.cpp
+```
+void UCharacterStatComponent::SetNewLevel(int32 NewLevel)
+{
+	auto MyGameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+	ensure(nullptr != MyGameInstance);
+	CurrentStatData = MyGameInstance->GetMyCharacterData(NewLevel);
+	if (nullptr != CurrentStatData)
+	{
+		Level = NewLevel;
+		//CurrentHP = CurrentStatData->MaxHP;
+		SetHP(CurrentStatData->MaxHP);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Level (%d) data doesn't exist"), NewLevel);
+	}
+}
+
+void UCharacterStatComponent::SetDamage(float NewDamage)
+{
+	ensure(nullptr != CurrentStatData);
+	SetHP(FMath::Clamp<float>(CurrentHP - NewDamage, 0.0f, CurrentStatData->MaxHP));
+}
+
+void UCharacterStatComponent::SetHP(float NewHP)
+{
+	CurrentHP = NewHP;
+	OnHPChanged.Broadcast();
+	if (CurrentHP <= KINDA_SMALL_NUMBER)
+	{
+		CurrentHP = 0.0f;
+		OnHPIsZero.Broadcast();
+	}
+}
+
+```
+
+
+
+
 델리게이트 로직은 이미 CharacterStatComponent 에서 설정했으므로, UI 에서 캐릭터 컴포넌트에 연결하는 코드를 짜보자. 만약 UI 과 캐릭터가 서로 다른 액터라면 약 포인터를 사용하는 것이 바람직하다.
 
 
