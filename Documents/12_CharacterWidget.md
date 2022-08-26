@@ -23,3 +23,8 @@ Width 150 Height 50
 VerticalBox , Spacer , Progress Bar, Spacer
 
 ![image](https://user-images.githubusercontent.com/29656900/186854874-53ce2555-ffb7-4df7-bc85-c5ebd193bd49.png)
+
+
+Progress Bar 선택후 세팅
+
+![image](https://user-images.githubusercontent.com/29656900/186855365-9974a2c1-6df7-476c-a6e3-2f6e22048b0d.png)
