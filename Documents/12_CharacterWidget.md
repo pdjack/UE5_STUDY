@@ -52,6 +52,11 @@ PublicDependencyModuleNames 에 UMG 라는 모듈을 추가하면 현재 프로�
 UMG 모듈의 Public/Components 폴더에는 현재 사용 중인 WidgetComponent.h 파일이 있는데, 캐릭터의 구현부에서 이 헤더 파일을 추가해 컴포넌트를 생성하는 코드를 생성한다.
 
 
+위젯 블루프린트 리소스 레퍼런스 복사 _C 를 붙여서 경로 사용
+
+![image](https://user-images.githubusercontent.com/29656900/186904693-a0295257-db2b-485e-8fd8-9e1732a060db.png)
+
+
 MyCharacter.cpp
 ```
 ...
@@ -70,7 +75,7 @@ AMyCharacter::AMyCharacter()
     
     HPBarWidget->SetRelativeLocation(FVector(0.0f, 0.0f, 180.0f));
     HPBarWidget->SetWidgetSpace(EWidgetSpace::Screen);
-    static ConstructorHelpers::FClassFinder<UUserWidget> UI_HUD(TEXT("/Game/Book/UI/UI_HPBar.UI_HPBar_C"));
+    static ConstructorHelpers::FClassFinder<UUserWidget> UI_HUD(TEXT("/Game/UI/CharacterHPBar.CharacterHPBar_C"));
     if (UI_HUD.Succeeded())
     {
     HPBarWidget->SetWidgetClass(UI_HUD.Class);
