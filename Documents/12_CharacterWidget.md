@@ -18,3 +18,8 @@ Fill Screen 에서  Custom 선택
 Width 150 Height 50
 
 ![image](https://user-images.githubusercontent.com/29656900/186854164-f54d2685-63c5-41d6-a4c8-0910cebe2006.png)
+
+
+VerticalBox , Spacer , Progress Bar, Spacer
+
+![image](https://user-images.githubusercontent.com/29656900/186854874-53ce2555-ffb7-4df7-bc85-c5ebd193bd49.png)
