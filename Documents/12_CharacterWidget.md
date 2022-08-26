@@ -44,5 +44,36 @@ class UWidgetComponent* HPBarWidget;
 ...
 ```
 HPBarWidget 을 선언했지만, 컴파일하면 '확인할 수 없는 외부 참조' 에러 메시지가 나온다. 이는 현재 프로젝트 설정에 UI 에 관련된 엔진 모듈을 지정하지 않았기 때문이다. [프로젝트명].Build.cs 파일을 보면 현재 사용하는 모듈을 확인할 수 있다. 
-UMG 를 추가한다.
+
 ![image](https://user-images.githubusercontent.com/29656900/186856695-77678134-8573-4c67-8797-8d503e34bcc8.png)
+
+PublicDependencyModuleNames 에 UMG 라는 모듈을 추가하면 현재 프로젝트에서 위젯 컴포넌트를 사용할 수 있게 된다. UMG 모듈은 UE4 프로젝트 내 Source -> Runtime -> UMG 폴더에 위치해 있다.
+
+UMG 모듈의 Public/Components 폴더에는 현재 사용 중인 WidgetComponent.h 파일이 있는데, 캐릭터의 구현부에서 이 헤더 파일을 추가해 컴포넌트를 생성하는 코드를 생성한다.
+
+
+MyCharacter.cpp
+```
+...
+#include "MyCharacterWidget.h"
+
+AMyCharacter::AMyCharacter()
+{
+    ...
+
+    HPBarWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("HPBARWIDGET"));
+    
+    ...
+    
+    HPBarWidget->SetupAttachment(GetMesh());
+    
+    HPBarWidget->SetRelativeLocation(FVector(0.0f, 0.0f, 180.0f));
+    HPBarWidget->SetWidgetSpace(EWidgetSpace::Screen);
+    static ConstructorHelpers::FClassFinder<UUserWidget> UI_HUD(TEXT("/Game/Book/UI/UI_HPBar.UI_HPBar_C"));
+    if (UI_HUD.Succeeded())
+    {
+    HPBarWidget->SetWidgetClass(UI_HUD.Class);
+    HPBarWidget->SetDrawSize(FVector2D(150.0f, 50.0f));
+    }
+}
+```
