@@ -125,3 +125,37 @@ private:
 };
 
 ```
+
+```
+#include "MyCharacterWidget.h"
+#include "CharacterStatComponent.h"
+#include "Components/ProgressBar.h"
+
+void UMyCharacterWidget::BindCharacterStat(UCharacterStatComponent* NewCharacterStat)
+{
+	ABCHECK(nullptr != NewCharacterStat);
+
+	CurrentCharacterStat = NewCharacterStat;
+
+	NewCharacterStat->OnHPChanged.AddUObject(this, &UCharacterWidget::UpdateHPWidget);
+}
+
+void UMyCharacterWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+	HPProgressBar = Cast<UProgressBar>(GetWidgetFromName(TEXT("PB_HPBAR")));
+	ABCHECK(nullptr != HPProgressBar);
+	UpdateHPWidget();
+}
+
+void UMyCharacterWidget::UpdateHPWidget()
+{
+	if (CurrentCharacterStat.IsValid())
+	{
+		if (nullptr != HPProgressBar)
+		{
+			HPProgressBar->SetPercent(CurrentCharacterStat->GetHPRatio());
+		}
+	}
+}
+```
