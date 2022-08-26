@@ -43,5 +43,6 @@ UPROPERTY(VisibleAnywhere, Category = UI)
 class UWidgetComponent* HPBarWidget;
 ...
 ```
-HPBarWidget 을 선언했지만, 컴파일하면 '확인할 수 없는 외부 참조' 에러 메시지가 나온다. 이는 현재 프로젝트 설정에 UI 에 관련된 엔진 모듈을 지정하지 않았기 때문이다. [프로젝트명].Build.cs 파일을 보면 현재 사용하는 모듈을 확인할 수 있다.
+HPBarWidget 을 선언했지만, 컴파일하면 '확인할 수 없는 외부 참조' 에러 메시지가 나온다. 이는 현재 프로젝트 설정에 UI 에 관련된 엔진 모듈을 지정하지 않았기 때문이다. [프로젝트명].Build.cs 파일을 보면 현재 사용하는 모듈을 확인할 수 있다. 
+UMG 를 추가한다.
 ![image](https://user-images.githubusercontent.com/29656900/186856695-77678134-8573-4c67-8797-8d503e34bcc8.png)
