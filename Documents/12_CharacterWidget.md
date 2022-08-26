@@ -28,3 +28,6 @@ VerticalBox , Spacer , Progress Bar, Spacer
 Progress Bar 선택후 세팅
 
 ![image](https://user-images.githubusercontent.com/29656900/186855365-9974a2c1-6df7-476c-a6e3-2f6e22048b0d.png)
+
+![image](https://user-images.githubusercontent.com/29656900/186855596-43195c3c-677a-4d5b-b085-dd357988f37f.png)
+
