@@ -83,3 +83,39 @@ AMyCharacter::AMyCharacter()
 이제 캐릭터의 스탯이 변경되면 이를 UI 에 전달해 프로그레스바가 변경되도록 기능을 구현해보자. UI 의 로직은 애님 인스턴스와 유사하게 C++ 클래스에서 미리 만들어 제공할 수 있는데, 위젯 블루프린트가 사용하는 기반 C++ 클래스는 UserWidget 이다. UserWidget 을 상속받은 새로운 클래스를 생성하고 이름을 MyCharacterWidget 으로 정한다.
 ![image](https://user-images.githubusercontent.com/29656900/186857804-4d555dc7-d5f2-4804-8c3e-e0e25b06713c.png)
 
+델리게이트 로직은 이미 CharacterStatComponent 에서 설정했으므로, UI 에서 캐릭터 컴포넌트에 연결하는 코드를 짜보자. 만약 UI 과 캐릭터가 서로 다른 액터라면 약 포인터를 사용하는 것이 바람직하다.
+
+
+MyCharacterWidget.h
+```
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "EngineMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "MyCharacterWidget.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class CPPTEST01_API UMyCharacterWidget : public UUserWidget
+{
+	GENERATED_BODY()
+	
+public:
+	void BindCharacterStat(class UCharacterStatComponent* NewCharacterStat);
+
+protected:
+	virtual void NativeConstruct() override;
+	void UpdateHPWidget();
+
+private:
+	TWeakObjectPtr<class UCharacterStatComponent> CurrentCharacterStat;
+
+	UPROPERTY()
+	class UProgressBar* HPProgressBar;
+};
+
+```
