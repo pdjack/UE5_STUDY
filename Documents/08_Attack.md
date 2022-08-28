@@ -101,6 +101,19 @@ FOnAttackHitCheckDelegate OnAttackHitCheck;
 ...
 };
 ```
+
+MyAnimInstance.cpp
+```
+void UMyAnimInstance::AnimNotify_AttackHitCheck()
+{
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AnimNofify_HitCheck"));
+		
+	OnAttackHitCheck.Broadcast();
+}
+```
+
+
 MyCharacter.cpp
 ```
 void ALKCharacter::BeginPlay()
