@@ -118,6 +118,7 @@ MyCharacter.h
 
 void AttackHitCheck();
 ```
+MyCharacter.cpp
 ```
 void AMyCharacter::AttackHitCheck()
 {
