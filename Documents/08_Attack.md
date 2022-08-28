@@ -24,6 +24,10 @@ public:
 
 MyCharacter.cpp
 ```
+...
+#include "MyAnimInstance.h"
+...
+
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
