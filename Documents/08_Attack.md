@@ -121,7 +121,7 @@ void ALKCharacter::BeginPlay()
 	Super::BeginPlay();
 ...
 	if (MyAnim)
-		MyAnim->OnAttackHitCheck.AddUObject(this, &AMyCharacter::AttackCheck);
+		MyAnim->OnAttackHitCheck.AddUObject(this, &AMyCharacter::AttackHitCheck);
 ...
 }
 ```
