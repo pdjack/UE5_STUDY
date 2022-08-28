@@ -31,3 +31,22 @@ AMyAnimInstance::AMyAnimInstance()
 Animation Bluprint 에 Montage DefaultSlot 추가 및 연결
 
 ![image](https://user-images.githubusercontent.com/29656900/183898564-018132ee-8481-438f-8e9e-b8cced9173ad.png)
+
+### Montage Play
+MyAnimInstance.h
+```
+public:
+...
+void PlayAttackMontage();
+
+```
+
+MyAnimInstance.cpp
+```
+void UMyAnimInstance::PlayAttackMontage()
+{	
+	Montage_Play(AttackMontage, 1.0f);
+}
+```
+
+
