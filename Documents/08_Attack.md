@@ -10,7 +10,7 @@ public:
   void Attack();
 
   UFUNCTION()
-	void OnAttackMontageEnded(UAnimMontage* Montage, bool bInerrupted);
+	void OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted);
   
   
   private:
@@ -51,7 +51,7 @@ void AMyCharacter::Attack()
 	}
 }
 
-void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInerrupted)
+void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted)
 {
 	IsAttacking = false;
 }
