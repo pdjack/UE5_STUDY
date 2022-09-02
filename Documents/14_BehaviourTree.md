@@ -113,7 +113,7 @@ const FName AABAIController::TargetKey(TEXT("Target"));
 
 AMyAIController::AMyAIController()
 {
-	RepeatInterval = 3.0f;
+	//RepeatInterval = 3.0f;
 }
 
 ...
