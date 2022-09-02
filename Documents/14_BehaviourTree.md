@@ -41,6 +41,35 @@ Task : AI 의 이동이나 블랙보드의 값 조정 등의 작업을 한다. �
 ![image](https://user-images.githubusercontent.com/29656900/188064051-5022360b-1869-42cd-ba94-417ac225152e.png)
 
 
+### MyAIController 
+MyAIController.h
+```
+public :
+...
+	static const FName HomePosKey;
+	static const FName PatrolPosKey;
+	static const FName TargetKey;
+```
+MyAIController.cpp
+```
+#include "MyAIController.h"
+#include "NavigationSystem.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "BehaviorTree/BehaviorTree.h"
+#include "BehaviorTree/BlackboardData.h"
+
+const FName AABAIController::HomePosKey(TEXT("HomePos"));
+const FName AABAIController::PatrolPosKey(TEXT("PatrolPos"));
+const FName AABAIController::TargetKey(TEXT("Target"));
+
+
+AMyAIController::AMyAIController()
+{
+	RepeatInterval = 3.0f;
+}
+
+...
+```
 ### NPC 추격 기능을 위한 Detect 구현
 BTService_Detect 는 BTService 를 부모로 하여 생성한다.
 
