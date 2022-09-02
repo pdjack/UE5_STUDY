@@ -26,8 +26,8 @@ public:
 private:
 	void OnRepeatTimer();
 
-	FTimerHandle RepeatTimerHandle;
-	float RepeatInterval;
+	//FTimerHandle RepeatTimerHandle;
+	//float RepeatInterval;
 
 	
 };

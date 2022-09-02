@@ -14,19 +14,9 @@ const FName AMyAIController::TargetKey(TEXT("Target"));
 
 AMyAIController::AMyAIController()
 {
-	RepeatInterval = 3.0f;
+	//RepeatInterval = 3.0f;
 
-	/*static ConstructorHelpers::FObjectFinder<UBlackboardData> BBObject(TEXT("BlackboardData'/Game/AI/BB_MyCharacter.BB_MyCharacter'"));
-	if (BBObject.Succeeded())
-	{
-		BBAsset = BBObject.Object;
-	}
-
-	static ConstructorHelpers::FObjectFinder<UBehaviorTree> BTObject(TEXT("BehaviorTree'/Game/AI/BT_MyCharacter.BT_MyCharacter'"));
-	if (BTObject.Succeeded())
-	{
-		BTAsset = BTObject.Object;
-	}*/
+	
 }
 
 void AMyAIController::OnPossess(APawn* InPawn)
@@ -34,16 +24,7 @@ void AMyAIController::OnPossess(APawn* InPawn)
 	Super::OnPossess(InPawn);
 	//GetWorld()->GetTimerManager().SetTimer(RepeatTimerHandle, this, &AMyAIController::OnRepeatTimer, RepeatInterval, true);
 
-	
-	
-	/*if (UseBlackboard(BBAsset, GetBlackboardComponent()))
-	{
-		Blackboard->SetValueAsVector(HomePosKey, InPawn->GetActorLocation());
-		if (!RunBehaviorTree(BTAsset))
-		{
-			UE_LOG(LogTemp,Error, TEXT("AIController couldn't run behavior tree!"));
-		}
-	}*/
+
 }
 
 void AMyAIController::OnUnPossess()
@@ -55,7 +36,7 @@ void AMyAIController::OnUnPossess()
 void AMyAIController::OnRepeatTimer()
 {
 	auto CurrentPawn = GetPawn();
-	ensure(nullptr != CurrentPawn);
+	if (nullptr == CurrentPawn) return;
 	//ABCHECK(nullptr != CurrentPawn);
 
 	UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
@@ -67,7 +48,6 @@ void AMyAIController::OnRepeatTimer()
 	FNavLocation NextLocation;
 	if (NavSystem->GetRandomPointInNavigableRadius(FVector::ZeroVector, 500.0f, NextLocation))
 	{
-		//UNavigationSystemV1::SimpleMoveToLocation(this, NextLocation.Location);
 		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, NextLocation.Location);
 		UE_LOG(LogTemp,Warning, TEXT("Next Location : %s"), *NextLocation.Location.ToString());
 	}
