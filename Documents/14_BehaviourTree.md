@@ -109,60 +109,53 @@ BTService_Detect.cpp
 ```
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "BTService_Detect.h"
-#include "MyAIController.h"
-#include "MyCharacter.h"
-#include "BehaviorTree/BlackboardComponent.h"
-#include "DrawDebugHelpers.h"
 
-UBTService_Detect::UBTService_Detect()
+#include "MyAIController.h"
+#include "NavigationSystem.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "BehaviorTree/BehaviorTree.h"
+#include "BehaviorTree/BlackboardData.h"
+ 
+const FName HomePosKey(TEXT("HomePos"));
+const FName PatrolPosKey(TEXT("PatrolPos"));
+const FName TargetKey(TEXT("Target"));
+
+AMyAIController::AMyAIController()
 {
-	NodeName = TEXT("Detect");
-	Interval = 1.0f;
+	RepeatInterval = 3.0f;
 }
 
-void UBTService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
+void AMyAIController::OnPossess(APawn* InPawn)
 {
-	Super::TickNode(OwnerComp, NodeMemory, DeltaSeconds);
+	Super::OnPossess(InPawn);
+	GetWorld()->GetTimerManager().SetTimer(RepeatTimerHandle, this, &AMyAIController::OnRepeatTimer, RepeatInterval, true);
+}
 
-	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
-	if (nullptr == ControllingPawn) return;
+void AMyAIController::OnUnPossess()
+{
+	Super::OnUnPossess();
+	GetWorld()->GetTimerManager().ClearTimer(RepeatTimerHandle);
+}
 
-	UWorld* World = ControllingPawn->GetWorld();
-	FVector Center = ControllingPawn->GetActorLocation();
-	float DetectRadius = 600.0f;
+void AMyAIController::OnRepeatTimer()
+{
+	auto CurrentPawn = GetPawn();
+	ensure(nullptr != CurrentPawn);
+	//ABCHECK(nullptr != CurrentPawn);
 
-	if (nullptr == World) return;
-	TArray<FOverlapResult> OverlapResults;
-	FCollisionQueryParams CollisionQueryParam(NAME_None, false, ControllingPawn);
-	bool bResult = World->OverlapMultiByChannel(
-		OverlapResults,
-		Center,
-		FQuat::Identity,
-		ECollisionChannel::ECC_GameTraceChannel1,
-		FCollisionShape::MakeSphere(DetectRadius),
-		CollisionQueryParam
-	);
-
-	if (bResult)
-	{
-		for (auto const& OverlapResult : OverlapResults)
-		{
-			AMyCharacter* MyCharacter = Cast<AMyCharacter>(OverlapResult.GetActor());
-			if (MyCharacter && MyCharacter->GetController()->IsPlayerController())
-			{
-				OwnerComp.GetBlackboardComponent()->SetValueAsObject(AMyAIController::TargetKey, MyCharacter);
-				DrawDebugSphere(World, Center, DetectRadius, 16, FColor::Green, false, 0.2f);
-
-				DrawDebugPoint(World, MyCharacter->GetActorLocation(), 10.0f, FColor::Blue, false, 0.2f);
-				DrawDebugLine(World, ControllingPawn->GetActorLocation(), MyCharacter->GetActorLocation(), FColor::Blue, false, 0.27f);
-				return;
-			}
-		}
+	UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
+	if (nullptr == NavSystem) {
+		UE_LOG(LogTemp, Warning, TEXT("NavSystem is nullptr!"));
+		return;
 	}
 
-	OwnerComp.GetBlackboardComponent()->SetValueAsObject(AABAIController::TargetKey, nullptr);
-	DrawDebugSphere(World, Center, DetectRadius, 16, FColor::Red, false, 0.2f);
+	FNavLocation NextLocation;
+	if (NavSystem->GetRandomPointInNavigableRadius(FVector::ZeroVector, 500.0f, NextLocation))
+	{
+		//UNavigationSystemV1::SimpleMoveToLocation(this, NextLocation.Location);
+		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, NextLocation.Location);
+		UE_LOG(LogTemp,Warning, TEXT("Next Location : %s"), *NextLocation.Location.ToString());
+	}
 }
 ```
 
