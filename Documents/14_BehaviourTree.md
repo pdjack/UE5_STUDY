@@ -74,6 +74,57 @@ AMyAIController::AMyAIController()
 
 ...
 ```
+
+### OnRepeatTimer 관련코드 주석처리
+
+BehaviourTree 로 AI를 구현할 것이므로, OnRepeatTimer 관련코드는 삭제 혹은 주석처리
+
+MyAIController.h
+```
+private:
+...
+	//FTimerHandle RepeatTimerHandle;
+	//float RepeatInterval;
+```
+
+MyAIController.cpp
+```
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "MyAIController.h"
+#include "NavigationSystem.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "BehaviorTree/BehaviorTree.h"
+#include "BehaviorTree/BlackboardData.h"
+ 
+const FName HomePosKey(TEXT("HomePos"));
+const FName PatrolPosKey(TEXT("PatrolPos"));
+const FName TargetKey(TEXT("Target"));
+
+AMyAIController::AMyAIController()
+{
+	//RepeatInterval = 3.0f;
+}
+
+void AMyAIController::OnPossess(APawn* InPawn)
+{
+	Super::OnPossess(InPawn);
+	//OnRepeatTimer는 BehaviourTree 사용하기 전에 간단히 테스트 하고 나서 주석처리한다.
+	//GetWorld()->GetTimerManager().SetTimer(RepeatTimerHandle, this, &AMyAIController::OnRepeatTimer, RepeatInterval, true);
+}
+
+void AMyAIController::OnUnPossess()
+{
+	Super::OnUnPossess();
+	//OnRepeatTimer는 BehaviourTree 사용하기 전에 간단히 테스트 하고 나서 주석처리한다.
+	//GetWorld()->GetTimerManager().ClearTimer(RepeatTimerHandle);
+}
+
+
+```
+
+
 ### NPC 추격 기능을 위한 Detect 구현
 BTService_Detect 는 BTService 를 부모로 하여 생성한다.
 
