@@ -45,7 +45,8 @@ void UCharacterStatComponent::TickComponent(float DeltaTime, ELevelTick TickType
 void UCharacterStatComponent::SetNewLevel(int32 NewLevel)
 {
 	auto MyGameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
-	ensure(nullptr != MyGameInstance);
+	if (nullptr == MyGameInstance) return;
+
 	CurrentStatData = MyGameInstance->GetMyCharacterData(NewLevel);
 	if (nullptr != CurrentStatData)
 	{

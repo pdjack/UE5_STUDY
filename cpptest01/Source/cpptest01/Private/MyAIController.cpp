@@ -6,22 +6,50 @@
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardData.h"
+#include "BehaviorTree/BlackboardComponent.h"
+ 
+const FName AMyAIController::HomePosKey(TEXT("HomePos"));
+const FName AMyAIController::PatrolPosKey(TEXT("PatrolPos"));
+const FName AMyAIController::TargetKey(TEXT("Target"));
 
 AMyAIController::AMyAIController()
 {
 	RepeatInterval = 3.0f;
+
+	/*static ConstructorHelpers::FObjectFinder<UBlackboardData> BBObject(TEXT("BlackboardData'/Game/AI/BB_MyCharacter.BB_MyCharacter'"));
+	if (BBObject.Succeeded())
+	{
+		BBAsset = BBObject.Object;
+	}
+
+	static ConstructorHelpers::FObjectFinder<UBehaviorTree> BTObject(TEXT("BehaviorTree'/Game/AI/BT_MyCharacter.BT_MyCharacter'"));
+	if (BTObject.Succeeded())
+	{
+		BTAsset = BTObject.Object;
+	}*/
 }
 
 void AMyAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-	GetWorld()->GetTimerManager().SetTimer(RepeatTimerHandle, this, &AMyAIController::OnRepeatTimer, RepeatInterval, true);
+	//GetWorld()->GetTimerManager().SetTimer(RepeatTimerHandle, this, &AMyAIController::OnRepeatTimer, RepeatInterval, true);
+
+	
+	
+	/*if (UseBlackboard(BBAsset, GetBlackboardComponent()))
+	{
+		Blackboard->SetValueAsVector(HomePosKey, InPawn->GetActorLocation());
+		if (!RunBehaviorTree(BTAsset))
+		{
+			UE_LOG(LogTemp,Error, TEXT("AIController couldn't run behavior tree!"));
+		}
+	}*/
 }
 
 void AMyAIController::OnUnPossess()
 {
 	Super::OnUnPossess();
-	GetWorld()->GetTimerManager().ClearTimer(RepeatTimerHandle);
+	//GetWorld()->GetTimerManager().ClearTimer(RepeatTimerHandle);
 }
 
 void AMyAIController::OnRepeatTimer()

@@ -73,6 +73,9 @@ AMyCharacter::AMyCharacter()
 
 	AIControllerClass = AMyAIController::StaticClass();
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
+
+	
+
 }
 
 // Called when the game starts or when spawned
@@ -102,7 +105,8 @@ void AMyCharacter::PostInitializeComponents()
 	Super::PostInitializeComponents();
 
 	MyAnim = Cast<UMyAnimInstance>(GetMesh()->GetAnimInstance());
-	MyAnim->OnAttackHitCheck.AddUObject(this, &AMyCharacter::AttackHitCheck);
+	if(MyAnim)
+		MyAnim->OnAttackHitCheck.AddUObject(this, &AMyCharacter::AttackHitCheck);
 	
 	FName WeaponSocket(TEXT("hand_rSocket"));
 	if (GetMesh()->DoesSocketExist(WeaponSocket))

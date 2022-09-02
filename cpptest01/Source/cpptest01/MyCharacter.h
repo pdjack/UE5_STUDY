@@ -65,4 +65,7 @@ public:
 private:
 	UPROPERTY()
 	class UMyAnimInstance* MyAnim;
+
+
+	
 };
