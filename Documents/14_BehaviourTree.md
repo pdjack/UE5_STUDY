@@ -171,6 +171,14 @@ void UBTService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeM
 }
 ```
 
+MyAIController.h
+```
+private:
+...
+	FTimerHandle RepeatTimerHandle;
+	float RepeatInterval;
+```
+
 MyAIController.cpp
 ```
 // Fill out your copyright notice in the Description page of Project Settings.
