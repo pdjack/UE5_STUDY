@@ -119,7 +119,15 @@ AMyAIController::AMyAIController()
 ...
 ```
 
+### AIController Blueprint
 
+C++ MyAIController class 기반 블루프린트 AI폴더에 생성 , 이름은 BP_MyAIController
+
+![image](https://user-images.githubusercontent.com/29656900/188126206-41ab4be1-a58e-4110-b182-e04fab1ee4c3.png)
+
+![image](https://user-images.githubusercontent.com/29656900/188126532-6dc98575-ab40-49f7-a9fe-652357c08060.png)
+
+![image](https://user-images.githubusercontent.com/29656900/188126647-44290b50-fd52-4683-b920-0cab9b94a495.png)
 
 
 ### NPC 추격 기능을 위한 Detect 구현
