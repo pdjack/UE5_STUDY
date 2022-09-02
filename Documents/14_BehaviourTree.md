@@ -148,7 +148,7 @@ void AMyAIController::OnUnPossess()
 void AMyAIController::OnRepeatTimer()
 {
 	auto CurrentPawn = GetPawn();
-	ensure(nullptr != CurrentPawn);
+	if(nullptr == CurrentPawn) return;
 	//ABCHECK(nullptr != CurrentPawn);
 
 	UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
