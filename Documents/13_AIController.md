@@ -68,7 +68,14 @@ private:
 
 AIController.cpp
 ```
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
 #include "MyAIController.h"
+#include "NavigationSystem.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "BehaviorTree/BehaviorTree.h"
+#include "BehaviorTree/BlackboardData.h"
 
 AMyAIController::AMyAIController()
 {
@@ -90,11 +97,12 @@ void AMyAIController::OnUnPossess()
 void AMyAIController::OnRepeatTimer()
 {
 	auto CurrentPawn = GetPawn();
-	ABCHECK(nullptr != CurrentPawn);
+	ensure(nullptr != CurrentPawn);
+	//ABCHECK(nullptr != CurrentPawn);
 
 	UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
 	if (nullptr == NavSystem) {
-		ABLOG(Warning, TEXT("NavSystem is nullptr!"));
+		UE_LOG(LogTemp, Warning, TEXT("NavSystem is nullptr!"));
 		return;
 	}
 
@@ -103,7 +111,7 @@ void AMyAIController::OnRepeatTimer()
 	{
 		//UNavigationSystemV1::SimpleMoveToLocation(this, NextLocation.Location);
 		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, NextLocation.Location);
-		ABLOG(Warning, TEXT("Next Location : %s"), *NextLocation.Location.ToString());
+		UE_LOG(LogTemp,Warning, TEXT("Next Location : %s"), *NextLocation.Location.ToString());
 	}
 }
 ```
