@@ -41,5 +41,102 @@ Task : AI 의 이동이나 블랙보드의 값 조정 등의 작업을 한다. �
 ![image](https://user-images.githubusercontent.com/29656900/188064051-5022360b-1869-42cd-ba94-417ac225152e.png)
 
 
+### NPC 추격 기능을 위한 Detect 구현
+BTService_Detect 는 BTService 를 부모로 하여 생성한다.
+
+비헤이비어 트리의 서비스 노드는 자신이 속한 컴포짓 노드가 활성화될 경우 주기적으로 TickNode 함수를 호출한다. 호출하는 주기는 서비스 노드 내부에 설정된 Interval 속성 값으로 지정할 수 있다.
+
+TickNode 함수에는 반경 6미터 내에 캐릭터가 있는지 감지하는 기능을 넣고(OverlapMultiByChannel), 캐릭터 정보는 TArray 로 전달한다.
+
+![image](https://user-images.githubusercontent.com/29656900/188064493-6739b44c-14c8-40cd-ab6e-6dccb186b053.png)
+
+
+![image](https://user-images.githubusercontent.com/29656900/188064401-fcb95b93-93d2-416f-8f29-48c49d9f0b98.png)
+
+BTService_Detect.h
+```
+
+#include "EngineMinimal.h"
+#include "BehaviorTree/BTService.h"
+#include "BTService_Detect.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class CPPTEST01_API UBTService_Detect : public UBTService
+{
+	GENERATED_BODY()
+public:
+		UBTService_Detect();
+
+protected:
+	virtual void TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds) override;
+
+};
+
+```
+BTService_Detect.cpp
+```
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#include "BTService_Detect.h"
+#include "MyAIController.h"
+#include "MyCharacter.h"
+#include "BehaviorTree/BlackboardComponent.h"
+#include "DrawDebugHelpers.h"
+
+UBTService_Detect::UBTService_Detect()
+{
+	NodeName = TEXT("Detect");
+	Interval = 1.0f;
+}
+
+void UBTService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
+{
+	Super::TickNode(OwnerComp, NodeMemory, DeltaSeconds);
+
+	APawn* ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
+	if (nullptr == ControllingPawn) return;
+
+	UWorld* World = ControllingPawn->GetWorld();
+	FVector Center = ControllingPawn->GetActorLocation();
+	float DetectRadius = 600.0f;
+
+	if (nullptr == World) return;
+	TArray<FOverlapResult> OverlapResults;
+	FCollisionQueryParams CollisionQueryParam(NAME_None, false, ControllingPawn);
+	bool bResult = World->OverlapMultiByChannel(
+		OverlapResults,
+		Center,
+		FQuat::Identity,
+		ECollisionChannel::ECC_GameTraceChannel2,
+		FCollisionShape::MakeSphere(DetectRadius),
+		CollisionQueryParam
+	);
+
+	if (bResult)
+	{
+		for (auto const& OverlapResult : OverlapResults)
+		{
+			AABCharacter* ABCharacter = Cast<AABCharacter>(OverlapResult.GetActor());
+			if (ABCharacter && ABCharacter->GetController()->IsPlayerController())
+			{
+				OwnerComp.GetBlackboardComponent()->SetValueAsObject(AABAIController::TargetKey, ABCharacter);
+				DrawDebugSphere(World, Center, DetectRadius, 16, FColor::Green, false, 0.2f);
+
+				DrawDebugPoint(World, ABCharacter->GetActorLocation(), 10.0f, FColor::Blue, false, 0.2f);
+				DrawDebugLine(World, ControllingPawn->GetActorLocation(), ABCharacter->GetActorLocation(), FColor::Blue, false, 0.27f);
+				return;
+			}
+		}
+	}
+
+	OwnerComp.GetBlackboardComponent()->SetValueAsObject(AABAIController::TargetKey, nullptr);
+	DrawDebugSphere(World, Center, DetectRadius, 16, FColor::Red, false, 0.2f);
+}
+```
+
+
 
 ![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
