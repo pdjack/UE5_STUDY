@@ -42,6 +42,8 @@ Task : AI 의 이동이나 블랙보드의 값 조정 등의 작업을 한다. �
 
 
 ### MyAIController 
+
+블랙보드 키로 쓰기 위한 FNAME 
 MyAIController.h
 ```
 public :
@@ -50,13 +52,7 @@ public :
 	static const FName PatrolPosKey;
 	static const FName TargetKey;
 	
-private:
-	...
-	UPROPERTY()
-	class UBehaviorTree* BTAsset;
 
-	UPROPERTY()
-	class UBlackboardData* BBAsset;
 ```
 MyAIController.cpp
 ```
@@ -113,6 +109,8 @@ protected:
 };
 
 ```
+
+OnRepeatTimer는 BehaviourTree 사용하기 전에 간단히 테스트 하고 나서 주석처리한다.
 BTService_Detect.cpp
 ```
 // Fill out your copyright notice in the Description page of Project Settings.
@@ -136,13 +134,13 @@ AMyAIController::AMyAIController()
 void AMyAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-	GetWorld()->GetTimerManager().SetTimer(RepeatTimerHandle, this, &AMyAIController::OnRepeatTimer, RepeatInterval, true);
+	//GetWorld()->GetTimerManager().SetTimer(RepeatTimerHandle, this, &AMyAIController::OnRepeatTimer, RepeatInterval, true);
 }
 
 void AMyAIController::OnUnPossess()
 {
 	Super::OnUnPossess();
-	GetWorld()->GetTimerManager().ClearTimer(RepeatTimerHandle);
+	//GetWorld()->GetTimerManager().ClearTimer(RepeatTimerHandle);
 }
 
 void AMyAIController::OnRepeatTimer()
@@ -151,19 +149,18 @@ void AMyAIController::OnRepeatTimer()
 	if(nullptr == CurrentPawn) return;
 	//ABCHECK(nullptr != CurrentPawn);
 
-	UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
-	if (nullptr == NavSystem) {
-		UE_LOG(LogTemp, Warning, TEXT("NavSystem is nullptr!"));
-		return;
-	}
+	//UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
+	//if (nullptr == NavSystem) {
+	//	UE_LOG(LogTemp, Warning, TEXT("NavSystem is nullptr!"));
+	//	return;
+	//}
 
-	FNavLocation NextLocation;
-	if (NavSystem->GetRandomPointInNavigableRadius(FVector::ZeroVector, 500.0f, NextLocation))
-	{
-		//UNavigationSystemV1::SimpleMoveToLocation(this, NextLocation.Location);
-		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, NextLocation.Location);
-		UE_LOG(LogTemp,Warning, TEXT("Next Location : %s"), *NextLocation.Location.ToString());
-	}
+	//FNavLocation NextLocation;
+	//if (NavSystem->GetRandomPointInNavigableRadius(FVector::ZeroVector, 500.0f, NextLocation))
+	//{
+	//	UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, NextLocation.Location);
+	//	UE_LOG(LogTemp,Warning, TEXT("Next Location : %s"), *NextLocation.Location.ToString());
+	//}
 }
 ```
 
