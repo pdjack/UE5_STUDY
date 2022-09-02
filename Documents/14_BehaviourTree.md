@@ -129,6 +129,10 @@ C++ MyAIController class 기반 블루프린트 AI폴더에 생성 , 이름은 B
 
 ![image](https://user-images.githubusercontent.com/29656900/188126647-44290b50-fd52-4683-b920-0cab9b94a495.png)
 
+### Behaviour Tree
+
+![image](https://user-images.githubusercontent.com/29656900/188126876-6c9eb334-876b-4847-85ea-7f85dec99291.png)
+
 
 ### NPC 추격 기능을 위한 Detect 구현
 BTService_Detect 는 BTService 를 부모로 하여 생성한다.
