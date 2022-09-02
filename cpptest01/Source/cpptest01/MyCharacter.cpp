@@ -6,6 +6,7 @@
 #include "CharacterStatComponent.h"
 #include "Components/WidgetComponent.h"
 #include "MyCharacterWidget.h"
+#include "MyAIController.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -69,6 +70,9 @@ AMyCharacter::AMyCharacter()
 	bUseControllerRotationYaw = false;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+
+	AIControllerClass = AMyAIController::StaticClass();
+	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 }
 
 // Called when the game starts or when spawned
