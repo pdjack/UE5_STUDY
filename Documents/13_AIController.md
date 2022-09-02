@@ -18,3 +18,14 @@ AMyCharacter::AMyCharacter()
 
 ```
 
+### 네비게이션 메시
+AIController 에 플레이어를 따라가도록 만들기 위해 네비게이션 메시(Navigation Mesh) 기반의 길 찾기 시스템을 이용한다.
+![image](https://user-images.githubusercontent.com/29656900/188051087-18b95556-f38e-404c-b439-03d5a89f3950.png)
+
+
+![image](https://user-images.githubusercontent.com/29656900/188051223-25c68f8f-2a6e-4709-9605-d3c50a79a333.png)
+
+
+![image](https://user-images.githubusercontent.com/29656900/188051269-2ddc0f55-4872-450a-9008-1869d438a949.png)
+
+![image](https://user-images.githubusercontent.com/29656900/188051305-ca620973-f23d-4e88-9755-75ce2c0d6a02.png)
