@@ -171,68 +171,6 @@ void UBTService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeM
 }
 ```
 
-MyAIController.h
-```
-private:
-...
-	FTimerHandle RepeatTimerHandle;
-	float RepeatInterval;
-```
-
-MyAIController.cpp
-```
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
-#include "MyAIController.h"
-#include "NavigationSystem.h"
-#include "Blueprint/AIBlueprintHelperLibrary.h"
-#include "BehaviorTree/BehaviorTree.h"
-#include "BehaviorTree/BlackboardData.h"
- 
-const FName HomePosKey(TEXT("HomePos"));
-const FName PatrolPosKey(TEXT("PatrolPos"));
-const FName TargetKey(TEXT("Target"));
-
-AMyAIController::AMyAIController()
-{
-	RepeatInterval = 3.0f;
-}
-
-void AMyAIController::OnPossess(APawn* InPawn)
-{
-	Super::OnPossess(InPawn);
-	//OnRepeatTimer는 BehaviourTree 사용하기 전에 간단히 테스트 하고 나서 주석처리한다.
-	//GetWorld()->GetTimerManager().SetTimer(RepeatTimerHandle, this, &AMyAIController::OnRepeatTimer, RepeatInterval, true);
-}
-
-void AMyAIController::OnUnPossess()
-{
-	Super::OnUnPossess();
-	//OnRepeatTimer는 BehaviourTree 사용하기 전에 간단히 테스트 하고 나서 주석처리한다.
-	//GetWorld()->GetTimerManager().ClearTimer(RepeatTimerHandle);
-}
-
-void AMyAIController::OnRepeatTimer()
-{
-	auto CurrentPawn = GetPawn();
-	if(nullptr == CurrentPawn) return;
-	//ABCHECK(nullptr != CurrentPawn);
-
-	UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
-	if (nullptr == NavSystem) {
-		UE_LOG(LogTemp, Warning, TEXT("NavSystem is nullptr!"));
-		return;
-	}
-
-	FNavLocation NextLocation;
-	if (NavSystem->GetRandomPointInNavigableRadius(FVector::ZeroVector, 500.0f, NextLocation))
-	{
-		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, NextLocation.Location);
-		UE_LOG(LogTemp,Warning, TEXT("Next Location : %s"), *NextLocation.Location.ToString());
-	}
-}
-```
 
 
 
