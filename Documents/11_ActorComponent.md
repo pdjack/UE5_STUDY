@@ -102,8 +102,9 @@ void UCharacterStatComponent::InitializeComponent()
 void UCharacterStatComponent::SetNewLevel(int32 NewLevel)
 {
 	auto MyGameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
-	ensure(nullptr != MyGameInstance);
-	CurrentStatData = MyGameInstance->GetMyCharacterData(NewLevel);
+	if(nullptr == MyGameInstance) return;
+	
+	auto CurrentStatData = MyGameInstance->GetMyCharacterData(NewLevel);
 	if(nullptr != CurrentStatData)
 	{
 		Level = NewLevel;
