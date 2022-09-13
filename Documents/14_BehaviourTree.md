@@ -233,5 +233,12 @@ void UBTService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeM
 ![image](https://user-images.githubusercontent.com/29656900/188126876-6c9eb334-876b-4847-85ea-7f85dec99291.png)
 
 
+### FindPatrol
+BTTaskNode 클래스 상속하여 BTTaskNode_FindPatrolPos 클래스 
+![image](https://user-images.githubusercontent.com/29656900/189899877-6e2700f6-429b-45fe-a7f3-23d1cbb1be2d.png)
+![image](https://user-images.githubusercontent.com/29656900/189900017-a7d51a58-8457-4651-b676-57fbb37122e2.png)
+
+
+
 
 ![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
