@@ -244,7 +244,7 @@ BTTaskNode_FindPatrolPos.h
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "EngineMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
 #include "BTTask_FindPatrolPos.generated.h"
 
@@ -268,7 +268,7 @@ BTTaskNode_FindPatrolPos.cpp
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BTTask_FindPatrolPos.h"
-#include "ABAIController.h"
+#include "AMyIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "NavigationSystem.h"
 
@@ -289,7 +289,7 @@ EBTNodeResult::Type UBTTask_FindPatrolPos::ExecuteTask(UBehaviorTreeComponent& O
 	if (nullptr == NavSystem)
 		return EBTNodeResult::Failed;
 
-	FVector Origin = OwnerComp.GetBlackboardComponent()->GetValueAsVector(AABAIController::HomePosKey);
+	FVector Origin = OwnerComp.GetBlackboardComponent()->GetValueAsVector(AMyAIController::HomePosKey);
 	FNavLocation NextPatrol;
 
 	if (NavSystem->GetRandomPointInNavigableRadius(Origin, 500.0f, NextPatrol))
