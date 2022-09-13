@@ -232,6 +232,7 @@ void UBTService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeM
 
 ![image](https://user-images.githubusercontent.com/29656900/188126876-6c9eb334-876b-4847-85ea-7f85dec99291.png)
 ![image](https://user-images.githubusercontent.com/29656900/189906298-2e555081-8ca9-4b04-a3cd-3761515ff649.png)
+![image](https://user-images.githubusercontent.com/29656900/189906549-ceff0c77-2f39-46e1-a5e8-fac5963ffba2.png)
 
 
 ### FindPatrol
