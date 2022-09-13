@@ -59,7 +59,7 @@ AI 폴더 생성
 
 블랙보드에서는 우리가 사용할 키들을 추가한다. HomePos 와 PatrolPos 는 Vector 로, Target 은 Base Class 를 MyCharacter 로 갖는 Object Type 으로 만든다.
 
-![image](https://user-images.githubusercontent.com/29656900/188063047-eb42c5fb-83b5-4b23-ac24-4c5dec0f3307.png)
+![image](https://user-images.githubusercontent.com/29656900/189904603-88d4ba09-b238-44dc-998e-8755bab7e8e6.png)
 
 
 BehaviourTree
@@ -304,6 +304,7 @@ EBTNodeResult::Type UBTTask_FindPatrolPos::ExecuteTask(UBehaviorTreeComponent& O
 ![image](https://user-images.githubusercontent.com/29656900/189902774-13ceeaf5-dcbe-4339-ae68-8fbc618d5259.png)
 ![image](https://user-images.githubusercontent.com/29656900/189903176-f22ca9f5-76ec-4594-a03c-d04c11b539c0.png)
 ![image](https://user-images.githubusercontent.com/29656900/189904020-d7884ba6-237e-477c-8e8a-2943a450909c.png)
+![image](https://user-images.githubusercontent.com/29656900/189904782-842def26-8060-4059-a80f-3a06df25a75f.png)
 
 
 
