@@ -490,4 +490,54 @@ OnAttackEnd.Broadcast();
 }
 ```
 
+BTTask_Attack.h
+```
+...
+private:
+	bool IsAttacking = false;
+```
+
+BTTask_Attack.cpp
+```
+#include "BTTask_Attack.h"
+#include "MyAIController.h"
+#include "../MyCharacter.h"
+
+
+UBTTask_Attack::UBTTask_Attack()
+{
+	bNotifyTick = true;
+	IsAttacking = false;
+}
+
+EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+{
+	EBTNodeResult::Type Result = Super::ExecuteTask(OwnerComp, NodeMemory);
+
+	auto MyCharacter = Cast<AMyCharacter>(OwnerComp.GetAIOwner()->GetPawn());
+	if (nullptr == MyCharacter)
+		return EBTNodeResult::Failed;
+
+	MyCharacter->Attack();
+	IsAttacking = false;
+	MyCharacter->OnAttackEnd.AddLambda([this]() -> void {
+		IsAttacking = false;
+	});
+
+	return EBTNodeResult::InProgress;
+}
+
+void UBTTask_Attack::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
+{
+	Super::TickTask(OwnerComp, NodeMemory, DeltaSeconds);
+	if (!IsAttacking)
+	{
+		FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
+	}
+	
+}
+```
+
+![image](https://user-images.githubusercontent.com/29656900/190167650-a6c34266-4d9b-4bac-a9ad-028f85c4a34f.png)
+
 ![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
