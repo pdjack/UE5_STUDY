@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
+DECLARE_MULTICAST_DELEGATE(FOnAttackEndDelegate);
+
 UCLASS()
 class CPPTEST01_API AMyCharacter : public ACharacter
 {
@@ -62,10 +64,12 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = UI)
 	class UWidgetComponent* HPBarWidget;
 
+	FOnAttackEndDelegate OnAttackEnd;
 private:
 	UPROPERTY()
 	class UMyAnimInstance* MyAnim;
 
-
+	UFUNCTION()
+	void OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted);
 	
 };

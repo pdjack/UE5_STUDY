@@ -107,6 +107,9 @@ void AMyCharacter::PostInitializeComponents()
 	MyAnim = Cast<UMyAnimInstance>(GetMesh()->GetAnimInstance());
 	if(MyAnim)
 		MyAnim->OnAttackHitCheck.AddUObject(this, &AMyCharacter::AttackHitCheck);
+
+	if (MyAnim)
+		MyAnim->OnMontageEnded.AddDynamic(this, &AMyCharacter::OnAttackMontageEnded);
 	
 	FName WeaponSocket(TEXT("hand_rSocket"));
 	if (GetMesh()->DoesSocketExist(WeaponSocket))
@@ -229,6 +232,11 @@ void AMyCharacter::AttackHitCheck()
 		}
 	}
 
+}
+
+void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted)
+{
+	OnAttackEnd.Broadcast();
 }
 
 float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
