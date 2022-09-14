@@ -447,8 +447,26 @@ void UBTTask_Attack::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemo
 	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 }
 ```
+
+이번에는 실제로 캐릭터에 공격 명령을 내리고 공격이 끝났을 때 태스크를 종료하도록 구현한다.
+
+먼저 AI컨트롤러에서도 공격 명령을 내릴 수 있도록 MyCharacter 클래스의 Attack 함수를 public 섹터로 이동시킨다.
+플레이어의 공격이 종료되면 공격 태스크에서 해당 알림을 받을 수 있도록 델리게이트를 새로 선언하고 공격이 종료될 때 이를 호출한다. 캐릭터의 델리게이트 선언후 태스크에서 람다 함수를 해당 델리게이트에 등록하고 Tick 함수 로직에서 FinishLatentTask 함수를 호출하여 태스크를 종료한다.
+
 MyCharacter.h
 ```
+DECLARE_MULTICAST_DELEGATE(FOnAttackEndDelegate);
+
+UCLASS()
+class CPPTEST01_API AMyCharacter : public ACharacter
+{
+...
+public:
+...
+//public 으로 옮긴다.
+void Attack();
+FOnAttackEndDelegate OnAttackEnd;
+
 private:
 ...
 UFUNCTION()
@@ -467,6 +485,8 @@ void AMyCharacter::PostInitializeComponents()
 }
 void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted)
 {
+
+OnAttackEnd.Broadcast();
 }
 ```
 
