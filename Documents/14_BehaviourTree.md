@@ -317,5 +317,73 @@ Selector 컴포짓으로 변경 (Selector 컴포짓을 새로 만들어서 Targe
 
 ![image](https://user-images.githubusercontent.com/29656900/190150792-4e01a574-a8dc-4349-9b61-e5b99acf8859.png)
 
+공격 범위 내에 있는지 판단하는 데코레이터를 생성한다. BTDecorator 를 상속하고 , 이름은 BTDecorator_IsInAttackRange 로 지정한다.
+![image](https://user-images.githubusercontent.com/29656900/190151331-5dc12156-7200-449c-88fe-f688947e0f9e.png)
+
+데코레이터 클래스는 CalculateRawConditionValue 함수를 상속받아 원하는 조건이 달성됐는지를 파악하도록 설계됐다. 이 함수는 const로 선언돼 데코레이터 클래스의 멤버 변수 값은 변경할 수 없다.
+
+BTDecorator_InInAttackRange.h
+```
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "EngineMinimal.h"
+#include "BehaviorTree/BTDecorator.h"
+#include "BTDecorator_IsInAttackRange.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class CPPTEST01_API UBTDecorator_IsInAttackRange : public UBTDecorator
+{
+	GENERATED_BODY()
+public:
+	UBTDecorator_IsInAttackRange();
+
+protected:
+	virtual bool CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const override;
+};
+```
+
+BTDecorator_IsInAttackRange.cpp
+```
+#include "BTDecorator_IsInAttackRange.h"
+#include "MyAIController.h"
+#include "../MyCharacter.h"
+#include "BehaviorTree/BlackboardComponent.h"
+
+
+UBTDecorator_IsInAttackRange::UBTDecorator_IsInAttackRange()
+{
+	NodeName = TEXT("CanAttack");
+}
+
+bool UBTDecorator_IsInAttackRange::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
+{
+	bool bResult = Super::CalculateRawConditionValue(OwnerComp, NodeMemory);
+
+	auto ControllingPawn = OwnerComp.GetAIOwner()->GetPawn();
+	if (nullptr == ControllingPawn)
+		return false;
+
+	auto Target = Cast<AMyCharacter>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(AMyAIController::TargetKey));
+	if (nullptr == Target)
+		return false;
+
+	bResult = (Target->GetDistanceTo(ControllingPawn) <= 200.0f);
+	return bResult;
+
+}
+```
+
+완성된 데코레이터를 가장 왼쪽에 위치한 시퀀스 컴포짓에 부착한다.
+![image](https://user-images.githubusercontent.com/29656900/190154067-fa8e97d4-6105-4eac-875a-8af87cd0c573.png)
+
+공격 수행하는 코드를 작성하기 전에 1.5초간 Wait
+![image](https://user-images.githubusercontent.com/29656900/190154205-cfa4cec1-6feb-4985-bd5b-7b07955e1953.png)
+
+
 
 ![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
