@@ -502,7 +502,7 @@ BTTask_Attack.cpp
 #include "BTTask_Attack.h"
 #include "MyAIController.h"
 #include "../MyCharacter.h"
-
+#include "BehaviorTree/BlackboardComponent.h"
 
 UBTTask_Attack::UBTTask_Attack()
 {
@@ -517,6 +517,16 @@ EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 	auto MyCharacter = Cast<AMyCharacter>(OwnerComp.GetAIOwner()->GetPawn());
 	if (nullptr == MyCharacter)
 		return EBTNodeResult::Failed;
+		
+	auto Target = Cast<AMyCharacter>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(AMyAIController::TargetKey));
+	if (nullptr == Target)
+		return EBTNodeResult::Failed;
+
+	FVector LookVector = Target->GetActorLocation() - MyCharacter->GetActorLocation();
+	LookVector.Z = 0.0f;
+	FRotator TargetRot = FRotationMatrix::MakeFromX(LookVector).Rotator();
+	MyCharacter->SetActorRotation(TargetRot);
+	
 
 	MyCharacter->Attack();
 	IsAttacking = false;
