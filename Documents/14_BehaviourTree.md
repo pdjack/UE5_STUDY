@@ -385,6 +385,67 @@ bool UBTDecorator_IsInAttackRange::CalculateRawConditionValue(UBehaviorTreeCompo
 
 반대쪽의 오른쪽 시퀀스 컴포짓에 동일한 데코레이터를 추가 하고 Inverse Condition속성값을 체크해 조건을 반대로 설정한다.
 ![image](https://user-images.githubusercontent.com/29656900/190155180-905e2f0c-9629-4b89-81aa-b1c987ce114b.png)
+![image](https://user-images.githubusercontent.com/29656900/190156090-83a3e4af-7124-4743-9832-328d7c02b5fa.png)
 
+
+이제 Wait 대신 실제로 플레이어를 공격할 테스크 생성
+
+BTTask를 상속받아 BTTask_Attack 클래스 생성.
+![image](https://user-images.githubusercontent.com/29656900/190157113-54734345-2fa5-4fab-b46f-84536f9b6782.png)
+
+공격 태스크는 공격 애니메이션이 끝날 때까지 대기해야 하는 지연 태스크이므로 ExecuteTask의 결과 값을 InProgress로 일단 반환하고 공격이 끝났을때 태스크가 끝났다고 알려줘야 한다. 이를 알려주는 함수가 FinishLatentTask다. 태스크에서 이 함수를 나중에 호출해주지 않으면 비헤이비어 트리 시스템은 현재 태스크에 계속 머물게 된다. 
+
+차후에 FinishLatentTask를 호출할 수 있도록 노드의 Tick 기능을 활성화하고 Tick에서 조건을 파악한 후 태스크 종료 명령을 내려줘야 한다.
+
+BTTask_Attack.h
+```
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "EngineMinimal.h"
+#include "BehaviorTree/BTTaskNode.h"
+#include "BTTask_Attack.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class CPPTEST01_API UBTTask_Attack : public UBTTaskNode
+{
+	GENERATED_BODY()
+public:
+	UBTTask_Attack();
+
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+
+protected:
+	virtual void TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds) override;
+
+};
+
+```
+BTTask_Attack.cpp
+```
+#include "BTTask_Attack.h"
+
+UBTTask_Attack::UBTTask_Attack()
+{
+	bNotifyTick = true;
+}
+
+EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+{
+	EBTNodeResult::Type Result = Super::ExecuteTask(OwnerComp, NodeMemory);
+
+	return EBTNodeResult::InProgress;
+}
+
+void UBTTask_Attack::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
+{
+	Super::TickTask(OwnerComp, NodeMemory, DeltaSeconds);
+	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
+}
+```
 
 ![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
