@@ -382,8 +382,9 @@ bool UBTDecorator_IsInAttackRange::CalculateRawConditionValue(UBehaviorTreeCompo
 ![image](https://user-images.githubusercontent.com/29656900/190154067-fa8e97d4-6105-4eac-875a-8af87cd0c573.png)
 
 공격 수행하는 코드를 작성하기 전에 1.5초간 Wait
-![image](https://user-images.githubusercontent.com/29656900/190154205-cfa4cec1-6feb-4985-bd5b-7b07955e1953.png)
 
+반대쪽의 오른쪽 시퀀스 컴포짓에 동일한 데코레이터를 추가 하고 Inverse Condition속성값을 체크해 조건을 반대로 설정한다.
+![image](https://user-images.githubusercontent.com/29656900/190155180-905e2f0c-9629-4b89-81aa-b1c987ce114b.png)
 
 
 ![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
