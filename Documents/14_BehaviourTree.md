@@ -447,5 +447,27 @@ void UBTTask_Attack::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemo
 	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 }
 ```
+MyCharacter.h
+```
+private:
+...
+UFUNCTION()
+void OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted);
+```
+
+MyCharacter.cpp
+```
+void AMyCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	...
+	if (MyAnim)
+		MyAnim->OnMontageEnded.AddDynamic(this, &AMyCharacter::OnAttackMontageEnded);
+	...
+}
+void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted)
+{
+}
+```
 
 ![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
