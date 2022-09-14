@@ -309,5 +309,13 @@ EBTNodeResult::Type UBTTask_FindPatrolPos::ExecuteTask(UBehaviorTreeComponent& O
 ![image](https://user-images.githubusercontent.com/29656900/189904782-842def26-8060-4059-a80f-3a06df25a75f.png)
 
 
+### NPC공격
+
+Selector 컴포짓으로 변경 (Selector 컴포짓을 새로 만들어서 TargetOn데코레이터를 드래그해 옮긴다)
+![image](https://user-images.githubusercontent.com/29656900/190150405-f0d62cae-8cc8-4547-a91e-cb4637b4849a.png)
+![image](https://user-images.githubusercontent.com/29656900/190150545-1fdbf3b1-f105-4036-9ccc-bdd5b85b0fcb.png)
+
+![image](https://user-images.githubusercontent.com/29656900/190150792-4e01a574-a8dc-4349-9b61-e5b99acf8859.png)
+
 
 ![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
