@@ -550,4 +550,3 @@ void UBTTask_Attack::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemo
 Attack Task 를 추가하고 Wait Task는 1.5초로 
 ![image](https://user-images.githubusercontent.com/29656900/190167650-a6c34266-4d9b-4bac-a9ad-028f85c4a34f.png)
 
-![image](https://user-images.githubusercontent.com/29656900/188063332-44c1a513-a885-4e59-a0e6-ef29b0d3c31b.png)
