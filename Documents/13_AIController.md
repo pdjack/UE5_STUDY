@@ -107,7 +107,7 @@ void AMyAIController::OnRepeatTimer()
 	}
 
 	FNavLocation NextLocation;
-	if (NavSystem->GetRandomPointInNavigableRadius(CurrentPawn->GetActorLocation(), 500.0f, NextLocation))
+	if (NavSystem->GetRandomPointInNavigableRadius(FVector::ZeroVector, 500.0f, NextLocation))
 	{
 		//UNavigationSystemV1::SimpleMoveToLocation(this, NextLocation.Location);
 		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, NextLocation.Location);
