@@ -537,7 +537,7 @@ EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 	
 
 	MyCharacter->Attack();
-	IsAttacking = false;
+	IsAttacking = true;
 	MyCharacter->OnAttackEnd.AddLambda([this]() -> void {
 		IsAttacking = false;
 	});
