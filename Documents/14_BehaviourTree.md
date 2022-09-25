@@ -84,6 +84,8 @@ Task : AI 의 이동이나 블랙보드의 값 조정 등의 작업을 한다. �
 
 ![image](https://user-images.githubusercontent.com/29656900/188064051-5022360b-1869-42cd-ba94-417ac225152e.png)
 
+![image](https://user-images.githubusercontent.com/29656900/192129864-cdd4f5d5-d805-4cef-8bbc-7a081e120dc1.png)
+
 
 ### MyAIController 
 
