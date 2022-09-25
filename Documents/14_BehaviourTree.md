@@ -63,6 +63,7 @@ AI 폴더 생성
 블랙보드에서는 우리가 사용할 키들을 추가한다. HomePos 와 PatrolPos 는 Vector 로, Target 은 Base Class 를 MyCharacter 로 갖는 Object Type 으로 만든다.
 
 ![image](https://user-images.githubusercontent.com/29656900/189904603-88d4ba09-b238-44dc-998e-8755bab7e8e6.png)
+![image](https://user-images.githubusercontent.com/29656900/192130543-cad2cf90-252c-4a4b-9c40-53f9fe44f254.png)
 
 
 BehaviourTree
