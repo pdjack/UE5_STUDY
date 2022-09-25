@@ -54,6 +54,9 @@ AI 폴더 생성
 
 ![image](https://user-images.githubusercontent.com/29656900/188062761-d191efa3-c07e-4f49-9bdc-1876bc6c5fde.png)
 
+![image](https://user-images.githubusercontent.com/29656900/192129921-9f1a0843-86dd-4669-96c5-7c510593c01e.png)
+
+
 블랙보드 : 인공지능의 판단에 사용하는 데이터 집합
 비헤이비어 트리 : 블랙보드의 데이터에 기반해 설계한 트리 정보를 저장한 애셋
 
