@@ -330,7 +330,7 @@ Selector 컴포짓으로 변경 (Selector 컴포짓을 새로 만들어서 Targe
 
 데코레이터 클래스는 CalculateRawConditionValue 함수를 상속받아 원하는 조건이 달성됐는지를 파악하도록 설계됐다. 이 함수는 const로 선언돼 데코레이터 클래스의 멤버 변수 값은 변경할 수 없다.
 
-BTDecorator_InInAttackRange.h
+BTDecorator_IsInAttackRange.h
 ```
 // Fill out your copyright notice in the Description page of Project Settings.
 
