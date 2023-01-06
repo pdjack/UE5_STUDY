@@ -114,9 +114,9 @@ MyAIController.cpp
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardData.h"
 
-const FName AABAIController::HomePosKey(TEXT("HomePos"));
-const FName AABAIController::PatrolPosKey(TEXT("PatrolPos"));
-const FName AABAIController::TargetKey(TEXT("Target"));
+const FName AMyAIController::HomePosKey(TEXT("HomePos"));
+const FName AMyAIController::PatrolPosKey(TEXT("PatrolPos"));
+const FName AMyAIController::TargetKey(TEXT("Target"));
 
 
 AMyAIController::AMyAIController()
