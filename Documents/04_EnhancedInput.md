@@ -122,6 +122,8 @@ void AMyCharacter::Look(const FInputActionValue& Value)
 }
 
 ```
+<img width="1512" alt="스크린샷 2023-12-02 오후 3 03 57" src="https://github.com/pdjack/UE5_STUDY/assets/29656900/9a60cd1b-ad9b-43fc-9234-3f1af4d737a3">
+
 
 - InputMappingContext
 <img width="1511" alt="스크린샷 2023-12-02 오후 2 53 29" src="https://github.com/pdjack/UE5_STUDY/assets/29656900/e4105f34-6a20-4ca6-9e6d-b2c8ed8f819e">
