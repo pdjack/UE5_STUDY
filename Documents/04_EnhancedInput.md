@@ -1,4 +1,4 @@
-- Character.h
+- MyCharacter.h
 ```
 private :
 ...
@@ -28,10 +28,25 @@ protected:
 
  ```
 
-- Character.cpp
+- MyCharacter.cpp
 
 ```
-  void AThirdPersonCppCharacter::BeginPlay()
+
+AMyCharacter::AMyCharacter()
+{
+...
+	// SetControlMode
+	SpringArm->bUsePawnControlRotation = true;
+	SpringArm->bInheritPitch = true;
+	SpringArm->bInheritRoll = true;
+	SpringArm->bInheritYaw = true;
+	bUseControllerRotationYaw = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+	
+}
+
+  void AMyCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
@@ -49,7 +64,7 @@ protected:
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void AThirdPersonCppCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
@@ -70,7 +85,7 @@ void AThirdPersonCppCharacter::SetupPlayerInputComponent(UInputComponent* Player
 	}
 }
 
-void AThirdPersonCppCharacter::Move(const FInputActionValue& Value)
+void AMyCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
@@ -93,7 +108,7 @@ void AThirdPersonCppCharacter::Move(const FInputActionValue& Value)
 	}
 }
 
-void AThirdPersonCppCharacter::Look(const FInputActionValue& Value)
+void AMyCharacter::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
