@@ -40,16 +40,36 @@ protected:
 
 AMyCharacter::AMyCharacter()
 {
-...
-	// SetControlMode
-	SpringArm->bUsePawnControlRotation = true;
-	SpringArm->bInheritPitch = true;
-	SpringArm->bInheritRoll = true;
-	SpringArm->bInheritYaw = true;
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+	// Don't rotate when the controller rotates. Let that just affect the camera.
+	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
-	GetCharacterMovement()->bOrientRotationToMovement = true;
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
-	
+	bUseControllerRotationRoll = false;
+
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SPRINGARM"));
+	SpringArm->SetupAttachment(GetCapsuleComponent());
+	SpringArm->TargetArmLength = 400.0f;
+	SpringArm->SetRelativeRotation(FRotator(-15.0f,0.0f,0.0f));
+	SpringArm->bUsePawnControlRotation = true;
+
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CAMERA"));
+	Camera->SetupAttachment(SpringArm);
+	Camera->bUsePawnControlRotation = false;
+
+	// Configure character movement
+	GetCharacterMovement()->bOrientRotationToMovement = true; // Character moves in the direction of input...	
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f); // ...at this rotation rate
+
+	// Note: For faster iteration times these variables, and many more, can be tweaked in the Character Blueprint
+	// instead of recompiling to adjust them
+	GetCharacterMovement()->JumpZVelocity = 700.f;
+	GetCharacterMovement()->AirControl = 0.35f;
+	GetCharacterMovement()->MaxWalkSpeed = 500.f;
+	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
+	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
+	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 }
 
   void AMyCharacter::BeginPlay()
