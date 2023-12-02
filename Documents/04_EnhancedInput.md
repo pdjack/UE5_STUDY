@@ -1,5 +1,11 @@
 - MyCharacter.h
 ```
+class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue;
+
+...
+
 private :
 ...
 /** MappingContext */
