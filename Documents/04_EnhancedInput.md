@@ -143,3 +143,9 @@ void AMyCharacter::Look(const FInputActionValue& Value)
 - InputAction
 <img width="1512" alt="스크린샷 2023-12-02 오후 3 01 34" src="https://github.com/pdjack/UE5_STUDY/assets/29656900/0b8ee875-896a-4c38-9c11-1e0c04d709bf">
 
+
+
+- [project].Build.cs
+  <img width="1173" alt="스크린샷 2023-12-02 오후 3 24 15" src="https://github.com/pdjack/UE5_STUDY/assets/29656900/affeeb00-7991-4462-8ba0-3be83546534b">
+
+  
