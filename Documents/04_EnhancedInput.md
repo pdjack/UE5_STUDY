@@ -122,3 +122,5 @@ void AMyCharacter::Look(const FInputActionValue& Value)
 }
 
 ```
+<img width="1511" alt="스크린샷 2023-12-02 오후 2 53 29" src="https://github.com/pdjack/UE5_STUDY/assets/29656900/e4105f34-6a20-4ca6-9e6d-b2c8ed8f819e">
+
